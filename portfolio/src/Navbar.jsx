@@ -16,6 +16,7 @@ const styles = {
     justifyContent: 'space-between',
     gap: '24px',
     padding: '18px 0 14px',
+    flexWrap: 'wrap',
     transition: 'border-color 300ms ease',
   },
   logo: {
@@ -28,13 +29,20 @@ const styles = {
     boxShadow: '0 14px 40px rgba(0, 0, 0, 0.35)',
     fontWeight: 900,
     transition: 'color 300ms ease, background 300ms ease',
+    overflow: 'hidden',
+  },
+  logoImage: {
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    objectFit: 'cover',
   },
   links: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    gap: '30px',
+    gap: 'clamp(12px, 2.4vw, 30px)',
     listStyle: 'none',
     margin: 0,
     padding: 0,
@@ -58,7 +66,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0 10px',
+    padding: '0 6px',
     border: 0,
     borderRadius: '999px',
     color: 'rgba(248, 250, 252, 0.82)',
@@ -85,7 +93,12 @@ const styles = {
   toggleIcon: {
     position: 'relative',
     zIndex: 1,
+    width: '24px',
+    height: '24px',
+    display: 'grid',
+    placeItems: 'center',
     fontSize: '0.9rem',
+    lineHeight: 1,
     fontWeight: 900,
   },
 }
@@ -106,7 +119,21 @@ const Navbar = ({ currentPath, onNavigate }) => {
   return (
     <header style={{ ...styles.outer, background: theme.nav }}>
       <nav style={{ ...styles.nav, borderBottom: `1px solid ${theme.navBorder}` }}>
-        <div style={{ ...styles.logo, color: theme.text, background: theme.logo }}>AD</div>
+        <a
+          href="/"
+          style={{ ...styles.logo, color: theme.text, background: theme.logo, textDecoration: 'none' }}
+          aria-label="Home"
+          onClick={(event) => {
+            event.preventDefault()
+            onNavigate('/')
+          }}
+        >
+          <img
+            src="https://1000logos.net/wp-content/uploads/2017/08/uconn-huskies-logo.png"
+            alt="Logo placeholder"
+            style={styles.logoImage}
+          />
+        </a>
         <ul style={styles.links}>
           {links.map(([label, href]) => (
             <li key={href}>
@@ -134,10 +161,10 @@ const Navbar = ({ currentPath, onNavigate }) => {
           aria-pressed={!isDark}
           onClick={toggleTheme}
         >
-          <span style={styles.toggleIcon}>C</span>
-          <span style={styles.toggleIcon}>*</span>
+          <span style={styles.toggleIcon}>🌙</span>
+          <span style={styles.toggleIcon}>☀️</span>
           <span style={{ ...styles.thumb, transform: isDark ? 'translateX(0)' : 'translateX(36px)' }}>
-            {isDark ? 'C' : '*'}
+            {isDark ? '' : ''}
           </span>
         </button>
       </nav>

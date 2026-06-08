@@ -1,5 +1,6 @@
 import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
+import profile_pic from './assets/Agronil_Headshot.jpeg'
 
 const card = {
   border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -64,8 +65,9 @@ const styles = {
     aspectRatio: '1 / 1.16',
     borderRadius: '8px',
     border: '2px solid rgba(226, 232, 240, 0.48)',
-    background:
-      'radial-gradient(circle at 50% 30%, #e8eefb 0 13%, transparent 14%), radial-gradient(circle at 50% 55%, #d7a7af 0 16%, transparent 17%), linear-gradient(145deg, #c7d2e0, #e9e2ff 58%, #fff6ff)',
+    backgroundImage: `url(${profile_pic})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   profile: {
     width: 'min(100%, 300px)',
@@ -146,7 +148,7 @@ const About = () => {
 
           <Reveal as="aside" delay={140}>
             <div style={{ ...styles.portraitCard, borderColor: theme.panelBorder, background: theme.panel }}>
-              <div style={styles.portrait} aria-label="Profile placeholder"></div>
+              <div style={styles.portrait} aria-label="Portrait of me"></div>
             </div>
           </Reveal>
         </div>

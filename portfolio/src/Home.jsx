@@ -4,7 +4,7 @@ import { useTheme } from './ThemeContext'
 const styles = {
   section: {
     minHeight: 'calc(100vh - 85px)',
-    padding: '90px 0 96px',
+    padding: '40px 0 96px',
     background:
       'radial-gradient(circle at 82% 35%, rgba(205, 174, 255, 0.26), transparent 18rem), radial-gradient(circle at 78% 20%, rgba(154, 211, 210, 0.18), transparent 16rem), linear-gradient(135deg, #071022 0%, #101a33 48%, #071022 100%)',
   },
@@ -15,14 +15,14 @@ const styles = {
   hero: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
-    gap: '72px',
+    gap: '48px',
     alignItems: 'center',
-    minHeight: '470px',
+    minHeight: '320px',
   },
   title: {
     margin: 0,
     color: '#ffffff',
-    fontSize: 'clamp(4rem, 11vw, 7.8rem)',
+    fontSize: 'clamp(4rem, 11vw, 7.5rem)',
     fontWeight: 950,
     lineHeight: 0.93,
     letterSpacing: 0,
@@ -31,7 +31,7 @@ const styles = {
   subtitle: {
     margin: '28px 0 0',
     color: 'rgba(241, 245, 249, 0.78)',
-    fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+    fontSize: 'clamp(1.8rem, 2vw, 2.8rem)',
     fontWeight: 700,
     textShadow: '0 4px 12px rgba(0, 0, 0, 0.42)',
   },
@@ -96,6 +96,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flexWrap: 'wrap',
     gap: '32px',
     padding: '34px clamp(24px, 5vw, 48px)',
     border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -141,6 +142,7 @@ const styles = {
     fontSize: '1.12rem',
     boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
     cursor: 'pointer',
+    whiteSpace: 'nowrap',
   },
   portrait: {
     width: '100%',
@@ -176,7 +178,7 @@ const Home = ({ onNavigate }) => {
         <div style={styles.hero}>
           <Reveal>
             <h1 style={{ ...styles.title, color: theme.text }}>Agronil<br />Das</h1>
-            <p style={{ ...styles.subtitle, color: theme.softText }}>UConn Student</p>
+            <p style={{ ...styles.subtitle, color: theme.softText }}>Aspiring Computer Scientist</p>
           </Reveal>
 
           <Reveal delay={140} style={{ ...styles.mockWindow, borderColor: theme.panelBorder, background: theme.panel }} aria-label="Placeholder interface artwork">

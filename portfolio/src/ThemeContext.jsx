@@ -3,10 +3,8 @@ import { createContext, useContext } from 'react'
 export const themes = {
   dark: {
     mode: 'dark',
-    page:
-      'radial-gradient(circle at 84% 32%, rgba(210, 184, 255, 0.24), transparent 17rem), radial-gradient(circle at 80% 24%, rgba(172, 219, 214, 0.15), transparent 14rem), linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
-    contact:
-      'radial-gradient(circle at 50% 48%, rgba(9, 34, 58, 0.78), transparent 31rem), radial-gradient(circle at 50% 100%, rgba(10, 31, 52, 0.88), transparent 32rem), linear-gradient(180deg, #080b18 0%, #0a1020 100%)',
+    page: 'linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
+    contact: 'linear-gradient(180deg, #080b18 0%, #0a1020 100%)',
     nav: 'rgba(7, 13, 29, 0.82)',
     navBorder: 'rgba(190, 204, 235, 0.14)',
     text: '#ffffff',
@@ -20,10 +18,8 @@ export const themes = {
   },
   light: {
     mode: 'light',
-    page:
-      'radial-gradient(circle at 84% 30%, rgba(181, 202, 255, 0.55), transparent 18rem), radial-gradient(circle at 12% 10%, rgba(203, 245, 235, 0.6), transparent 17rem), linear-gradient(135deg, #f8fbff 0%, #eaf0ff 55%, #f9fbff 100%)',
-    contact:
-      'radial-gradient(circle at 50% 45%, rgba(205, 222, 255, 0.82), transparent 30rem), radial-gradient(circle at 50% 100%, rgba(216, 244, 239, 0.72), transparent 32rem), linear-gradient(180deg, #f8fbff 0%, #eaf0ff 100%)',
+    page: 'linear-gradient(135deg, #f8fbff 0%, #eaf0ff 55%, #f9fbff 100%)',
+    contact: 'linear-gradient(180deg, #f8fbff 0%, #eaf0ff 100%)',
     nav: 'rgba(248, 251, 255, 0.86)',
     navBorder: 'rgba(15, 23, 42, 0.12)',
     text: '#0f172a',
