@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '@google/model-viewer'
 import { useTheme } from './ThemeContext'
+import InteractiveButton from './InteractiveButton'
 
 // Import your actual asset filenames here.
 import icon14 from './assets/C.png'
@@ -174,8 +175,8 @@ const styles = {
 
 const previewTiles = [
   ['About Me', 'Bio', 'A short snapshot of your background, academic focus, and personal story.', '/about', 'READ BIO'],
-  ['Experience', 'Work', 'A timeline of internships, research roles, leadership, and professional growth.', '/experience', 'VIEW EXPERIENCE'],
-  ['Projects', 'Builds', 'Selected applications, tools, and technical work with placeholder project summaries.', '/projects', 'VIEW PROJECTS'],
+  ['Experience', 'Work', 'A timeline of internships.', '/experience', 'VIEW EXPERIENCE'],
+  ['Projects', 'Builds', 'Selected applications, tools, .', '/projects', 'VIEW PROJECTS'],
   ['Research', 'Labs', 'A preview of research interests, methods, and academic exploration.', '/research', 'VIEW RESEARCH'],
   ['Awards & Honors', 'Recognition', 'Scholarships, competitions, leadership milestones, and achievements.', '/awards', 'VIEW AWARDS'],
   ['Contact', 'Connect', 'Quick links for email, LinkedIn, and code so viewers can reach you.', '/contact', 'GET IN TOUCH'],
@@ -295,13 +296,13 @@ const Home = ({ onNavigate }) => {
                 <h3 style={{ ...styles.previewTitle, color: theme.text, textShadow: textShadowStyle }}>{title}</h3>
                 <p style={{ ...styles.previewText, color: theme.muted, textShadow: smallTextShadowStyle }}>{text}</p>
               </div>
-              <a
+              <InteractiveButton
                 href={path}
                 style={{ ...styles.button, color: theme.buttonText, background: theme.button, textDecoration: 'none' }}
                 onClick={(event) => handleTileClick(event, path)}
               >
                 {buttonLabel}
-              </a>
+              </InteractiveButton>
             </div>
           ))}
         </div>
