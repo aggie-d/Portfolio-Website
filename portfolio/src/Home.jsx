@@ -21,6 +21,8 @@ import icon12 from './assets/Pandas.png'
 import icon13 from './assets/PYsr.png'
 import icon1 from './assets/Python.png'
 import icon15 from './assets/SQL.png'
+import icon16 from './assets/Overleaf.png'
+import cubeModel from './assets/cube.glb?url'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -61,14 +63,9 @@ const styles = {
   modelContainer: {
     minHeight: '320px',
     width: '100%',
-    borderRadius: '9px',
-    background: 'linear-gradient(145deg, rgba(6, 12, 28, 0.4), rgba(18, 27, 52, 0.4))',
-    boxShadow: '0 30px 85px rgba(0, 0, 0, 0.45), 28px 24px 80px rgba(213, 171, 255, 0.24)',
-    overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: '1px solid rgba(226, 232, 240, 0.58)',
   },
   carouselContainer: {
     overflow: 'hidden',
@@ -190,6 +187,11 @@ const Home = ({ onNavigate }) => {
   const textShadowStyle = isDarkMode ? '0 4px 12px rgba(0, 0, 0, 0.6)' : 'none';
   const smallTextShadowStyle = isDarkMode ? '0 2px 8px rgba(0, 0, 0, 0.4)' : 'none';
 
+  // Setup model switching based on theme
+  const lightModelSrc = cubeModel;
+  const darkModelSrc = cubeModel; // Replace this with your actual dark mode model later
+  const currentModel = isDarkMode ? darkModelSrc : lightModelSrc;
+
   const trackRef = useRef(null)
   const containerRef = useRef(null)
   const tweenRef = useRef(null)
@@ -229,7 +231,7 @@ const Home = ({ onNavigate }) => {
     return () => ctx.revert()
   }, [])
 
-  const carouselIcons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15]
+  const carouselIcons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15, icon16]
   // Duplicated array for seamless GSAP scrolling loop
   const carouselItems = [...carouselIcons, ...carouselIcons]
 
@@ -244,12 +246,12 @@ const Home = ({ onNavigate }) => {
         <div style={styles.hero}>
           <div className="gsap-reveal">
             <h1 style={{ ...styles.title, color: theme.text, textShadow: isDarkMode ? styles.title.textShadow : 'none' }}>Agronil<br />Das</h1>
-            <p style={{ ...styles.subtitle, color: theme.softText, textShadow: isDarkMode ? styles.subtitle.textShadow : 'none' }}>Aspiring Computer Scientist</p>
+            <p style={{ ...styles.subtitle, color: theme.softText, textShadow: isDarkMode ? styles.subtitle.textShadow : 'none' }}>Computer Science & Cognitive Science</p>
           </div>
 
-          <div className="gsap-reveal" data-delay="140" style={{ ...styles.modelContainer, borderColor: theme.panelBorder, background: theme.panel }}>
+          <div className="gsap-reveal" data-delay="140" style={styles.modelContainer}>
             <model-viewer
-              src="path/to/your/model.glb"
+              src={currentModel}
               alt="A 3D model placeholder"
               auto-rotate="true"
               camera-controls="true"
