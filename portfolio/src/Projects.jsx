@@ -9,7 +9,7 @@ const styles = {
       'radial-gradient(circle at 86% 24%, rgba(210, 184, 255, 0.24), transparent 15rem), radial-gradient(circle at 84% 18%, rgba(172, 219, 214, 0.15), transparent 13rem), linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
   },
   wrap: {
-    width: 'min(1180px, calc(100% - 48px))',
+    width: 'min(1280px, calc(100% - 64px))',
     margin: '0 auto',
   },
   top: {
@@ -23,7 +23,7 @@ const styles = {
     maxWidth: '820px',
     margin: 0,
     color: '#ffffff',
-    fontSize: 'clamp(2.6rem, 5vw, 4.35rem)',
+    fontSize: 'clamp(2rem, 4vw, 3.2rem)',
     fontWeight: 950,
     lineHeight: 1.05,
   },
@@ -65,18 +65,18 @@ const styles = {
   titleSmall: {
     margin: 0,
     color: '#ffffff',
-    fontSize: '1.42rem',
+    fontSize: '1.2rem',
     lineHeight: 1.12,
   },
   meta: {
     margin: 0,
     color: 'rgba(226, 232, 240, 0.76)',
-    fontSize: '1.05rem',
+    fontSize: '0.9rem',
   },
   desc: {
     margin: 0,
     color: 'rgba(248, 250, 252, 0.82)',
-    fontSize: '1.06rem',
+    fontSize: '0.95rem',
     lineHeight: 1.33,
   },
   footer: {
@@ -101,6 +101,7 @@ const styles = {
     background: 'linear-gradient(110deg, #ffffff, #eef2ff 65%, #d8d8ff)',
     fontWeight: 850,
     cursor: 'pointer',
+    fontSize: '0.9rem',
   },
 }
 

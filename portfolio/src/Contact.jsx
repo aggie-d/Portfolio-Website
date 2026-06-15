@@ -31,7 +31,7 @@ const styles = {
   wrap: {
     position: 'relative',
     zIndex: 1,
-    width: 'min(920px, calc(100% - 48px))',
+    width: 'min(1024px, calc(100% - 64px))',
     minHeight: '430px',
     margin: '0 auto',
     display: 'grid',
@@ -79,10 +79,8 @@ const styles = {
   label: {
     margin: 0,
     color: '#ffffff',
-    fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
-    fontSize: '2rem',
+    fontSize: '1.5rem',
     fontWeight: 900,
-    letterSpacing: '0.06em',
     textAlign: 'center',
     textShadow: '0 4px 16px rgba(0, 0, 0, 0.45)',
   },

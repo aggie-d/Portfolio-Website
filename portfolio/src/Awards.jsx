@@ -9,7 +9,7 @@ const styles = {
       'radial-gradient(circle at 86% 24%, rgba(210, 184, 255, 0.22), transparent 15rem), radial-gradient(circle at 84% 17%, rgba(172, 219, 214, 0.14), transparent 13rem), linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
   },
   wrap: {
-    width: 'min(1180px, calc(100% - 48px))',
+    width: 'min(1280px, calc(100% - 64px))',
     margin: '0 auto',
   },
   top: {
@@ -22,7 +22,7 @@ const styles = {
   title: {
     margin: 0,
     color: '#ffffff',
-    fontSize: 'clamp(2.8rem, 5.5vw, 4.45rem)',
+    fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
     fontWeight: 950,
     lineHeight: 1.05,
   },
@@ -62,12 +62,13 @@ const styles = {
   heading: {
     margin: '0 0 8px',
     color: '#ffffff',
-    fontSize: '1.55rem',
+    fontSize: '1.2rem',
     fontWeight: 900,
   },
   text: {
     margin: 0,
     color: 'rgba(248, 250, 252, 0.82)',
+    fontSize: '1rem',
     lineHeight: 1.34,
   },
   image: {
