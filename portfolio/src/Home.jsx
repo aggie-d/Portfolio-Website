@@ -34,7 +34,7 @@ const styles = {
       'radial-gradient(circle at 82% 35%, rgba(205, 174, 255, 0.26), transparent 18rem), radial-gradient(circle at 78% 20%, rgba(154, 211, 210, 0.18), transparent 16rem), linear-gradient(135deg, #071022 0%, #101a33 48%, #071022 100%)',
   },
   wrap: {
-    width: 'min(1180px, calc(100% - 48px))',
+    width: 'min(1280px, calc(100% - 64px))',
     margin: '0 auto',
   },
   hero: {
@@ -47,7 +47,7 @@ const styles = {
   title: {
     margin: 0,
     color: '#ffffff',
-    fontSize: 'clamp(4rem, 11vw, 7.5rem)',
+    fontSize: 'clamp(3rem, 8vw, 5.5rem)',
     fontWeight: 950,
     lineHeight: 0.93,
     letterSpacing: 0,
@@ -56,7 +56,7 @@ const styles = {
   subtitle: {
     margin: '28px 0 0',
     color: 'rgba(241, 245, 249, 0.78)',
-    fontSize: 'clamp(1.8rem, 2vw, 2.8rem)',
+    fontSize: 'clamp(1.2rem, 2vw, 1.8rem)',
     fontWeight: 700,
     textShadow: '0 4px 12px rgba(0, 0, 0, 0.42)',
   },
@@ -100,7 +100,7 @@ const styles = {
   sectionIntro: {
     margin: '0 0 28px',
     color: '#ffffff',
-    fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+    fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
     fontWeight: 950,
   },
   tile: {
@@ -132,14 +132,14 @@ const styles = {
   previewTitle: {
     margin: 0,
     color: '#ffffff',
-    fontSize: 'clamp(1.7rem, 3vw, 2.25rem)',
+    fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)',
     fontWeight: 950,
   },
   previewText: {
     maxWidth: '680px',
     margin: '16px 0 24px',
     color: 'rgba(241, 245, 249, 0.86)',
-    fontSize: '1.02rem',
+    fontSize: '1rem',
     lineHeight: 1.45,
   },
   button: {
@@ -154,7 +154,7 @@ const styles = {
     color: '#111827',
     background: 'linear-gradient(110deg, #ffffff, #f4f7ff 58%, #d8d8ff)',
     fontWeight: 900,
-    fontSize: '1.12rem',
+    fontSize: '1rem',
     boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
     cursor: 'pointer',
     whiteSpace: 'nowrap',
@@ -263,6 +263,7 @@ const Home = ({ onNavigate }) => {
             </model-viewer>
           </div>
         </div>
+      </div>
 
         <div className="gsap-reveal" data-delay="80">
           <div 
@@ -280,6 +281,8 @@ const Home = ({ onNavigate }) => {
             </div>
           </div>
         </div>
+
+      <div style={styles.wrap}>
 
         <div className="gsap-reveal">
           <h2 style={{ ...styles.sectionIntro, color: theme.text, textShadow: textShadowStyle }}>Explore the Portfolio</h2>

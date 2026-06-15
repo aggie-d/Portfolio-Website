@@ -10,14 +10,14 @@ const styles = {
       'radial-gradient(circle at 86% 24%, rgba(210, 184, 255, 0.24), transparent 15rem), radial-gradient(circle at 84% 18%, rgba(172, 219, 214, 0.15), transparent 13rem), linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
   },
   wrap: {
-    width: 'min(1180px, calc(100% - 48px))',
+    width: 'min(1280px, calc(100% - 64px))',
     margin: '0 auto',
   },
   title: {
     maxWidth: '860px',
     margin: '0 0 18px',
     color: '#ffffff',
-    fontSize: 'clamp(2.8rem, 5.5vw, 4.6rem)',
+    fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
     fontWeight: 950,
     lineHeight: 1.04,
   },
@@ -25,7 +25,7 @@ const styles = {
     maxWidth: '760px',
     margin: '0 0 46px',
     color: 'rgba(248, 250, 252, 0.82)',
-    fontSize: '1.22rem',
+    fontSize: '1.05rem',
     lineHeight: 1.45,
   },
   timeline: {
@@ -46,26 +46,26 @@ const styles = {
   date: {
     margin: 0,
     color: 'rgba(241, 245, 249, 0.62)',
-    fontSize: '0.95rem',
+    fontSize: '0.85rem',
     fontWeight: 850,
     textTransform: 'uppercase',
   },
   role: {
     margin: '0 0 8px',
     color: '#ffffff',
-    fontSize: '1.65rem',
+    fontSize: '1.3rem',
     fontWeight: 900,
   },
   org: {
     margin: '0 0 14px',
     color: 'rgba(241, 245, 249, 0.72)',
-    fontSize: '1.08rem',
+    fontSize: '0.95rem',
     fontWeight: 750,
   },
   text: {
     margin: 0,
     color: 'rgba(248, 250, 252, 0.82)',
-    fontSize: '1.08rem',
+    fontSize: '0.95rem',
     lineHeight: 1.42,
   },
 }
