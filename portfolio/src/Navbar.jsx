@@ -120,12 +120,12 @@ const Navbar = ({ currentPath, onNavigate }) => {
     <header style={{ ...styles.outer, background: theme.nav }}>
       <nav style={{ ...styles.nav, borderBottom: `1px solid ${theme.navBorder}` }}>
         <a
-          href="/"
+          href="#"
           style={{ ...styles.logo, color: theme.text, background: theme.logo, textDecoration: 'none' }}
-          aria-label="Home"
+          aria-label="Refresh"
           onClick={(event) => {
             event.preventDefault()
-            onNavigate('/')
+            window.location.reload()
           }}
         >
           <img
