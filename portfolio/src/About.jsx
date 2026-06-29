@@ -2,11 +2,14 @@ import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
 import profile_pic from './assets/Agronil_Headshot.jpeg'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
-
+import InteractiveButton from './InteractiveButton'
 // Import timeline event graphics
 import researchImg from './assets/research_event.png'
 import softwareImg from './assets/software_event.png'
 import internshipImg from './assets/internship_event.png'
+import timberwolves_logo from './assets/Minnesota-Timberwolves-Logo-2017-Present.png'
+import liverpool_logo from './assets/Liverpool_FC.svg.png'
+import lions_logo from './assets/Detroit_Lions_logo.svg.png'
 
 const card = {
   border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -98,6 +101,67 @@ const timelineEvents = [
 const About = () => {
   const { theme } = useTheme()
 
+  const hobbies = [
+    {
+      name: 'Photography',
+      description: 'Capturing nature & cityscapes.',
+      image: profile_pic,
+    },
+    {
+      name: 'Reading',
+      description: 'Sci-fi & tech history.',
+      image: profile_pic,
+    },
+    {
+      name: 'Hiking',
+      description: 'Exploring mountain trails.',
+      image: profile_pic,
+    },
+    {
+      name: 'Cooking',
+      description: 'Experimenting with recipes.',
+      image: profile_pic,
+    },
+    {
+      name: 'Gaming',
+      description: 'Indie & strategy games.',
+      image: profile_pic,
+    },
+    {
+      name: 'Music',
+      description: 'Playing guitar & synth.',
+      image: profile_pic,
+    },
+    {
+      name: 'Coding',
+      description: 'Building open-source tools.',
+      image: profile_pic,
+    },
+    {
+      name: 'Traveling',
+      description: 'Discovering new cultures.',
+      image: profile_pic,
+    },
+  ]
+
+  const sportsTeams = [
+    {
+      name: 'Liverpool',
+      description: 'Soccer',
+      image: liverpool_logo,
+    },
+    {
+      name: 'Timberwolves',
+      description: 'Basketball',
+      image: timberwolves_logo,
+    },
+    {
+      name: 'Lions',
+      description: 'Football',
+      image: lions_logo,
+    },
+  ]
+
   return (
     <section id="about" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
@@ -110,6 +174,133 @@ const About = () => {
               and low-level computer architecture. This placeholder paragraph can become your personal story,
               academic focus, and professional direction.
             </p>
+
+            <h4 style={{ 
+              color: theme.softText, 
+              fontSize: '0.85rem', 
+              fontWeight: 850, 
+              textTransform: 'uppercase', 
+              letterSpacing: '1.2px',
+              marginTop: '44px',
+              marginBottom: '16px',
+              textAlign: 'center'
+            }}>
+              My Hobbies
+            </h4>
+
+            <div className="hobbies-grid">
+              {hobbies.map((hobby) => (
+                <InteractiveButton 
+                  key={hobby.name} 
+                  style={{ 
+                    padding: '10px', 
+                    borderRadius: '8px', 
+                    background: theme.panel,
+                    border: `1px solid ${theme.panelBorder}`,
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                    textAlign: 'left',
+                    color: 'inherit',
+                    width: '100%',
+                    display: 'block'
+                  }}
+                >
+                  <div style={{
+                    display: 'flex', 
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '8px',
+                    width: '100%'
+                  }}>
+                    {/* Text on the left */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: theme.text, lineHeight: 1.25, marginBottom: '3px' }}>
+                        {hobby.name}
+                      </div>
+                      <div style={{ fontSize: '0.68rem', fontWeight: 400, color: theme.muted, lineHeight: 1.3 }}>
+                        {hobby.description}
+                      </div>
+                    </div>
+                    {/* Image on the right */}
+                    <img 
+                      src={hobby.image} 
+                      alt={`${hobby.name} placeholder`} 
+                      style={{ 
+                        width: '30px', 
+                        height: '30px', 
+                        borderRadius: '5px', 
+                        objectFit: 'contain', 
+                        border: `1px solid ${theme.panelBorder}`,
+                        flexShrink: 0,
+                      }} 
+                    />
+                  </div>
+                </InteractiveButton>
+              ))}
+            </div>
+
+            <h4 style={{ 
+              color: theme.softText, 
+              fontSize: '0.85rem', 
+              fontWeight: 850, 
+              textTransform: 'uppercase', 
+              letterSpacing: '1.2px',
+              marginTop: '24px',
+              marginBottom: '16px',
+              textAlign: 'center'
+            }}>
+              My Teams
+            </h4>
+
+            <InteractiveButton 
+              style={{
+                width: '100%',
+                padding: '20px',
+                borderRadius: '12px',
+                background: theme.panel,
+                border: `1px solid ${theme.panelBorder}`,
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+                display: 'block',
+                cursor: 'default',
+              }}
+            >
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '12px',
+                width: '100%'
+              }}>
+                {sportsTeams.map((team) => (
+                  <div 
+                    key={team.name}
+                    style={{
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '16px 10px', 
+                      borderRadius: '8px', 
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: `1px solid rgba(255, 255, 255, 0.05)`,
+                    }}
+                  >
+                    <img 
+                      src={team.image} 
+                      alt={`${team.name} logo`} 
+                      style={{ 
+                        width: '100%', 
+                        height: '90px', 
+                        objectFit: 'contain', 
+                      }} 
+                    />
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: theme.text, textAlign: 'center', marginTop: '10px' }}>
+                      {team.name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </InteractiveButton>
+
           </Reveal>
 
           <Reveal as="aside" delay={140} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'min(100%, 300px)', margin: '0 auto' }}>

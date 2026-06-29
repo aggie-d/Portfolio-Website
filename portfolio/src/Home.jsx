@@ -285,7 +285,7 @@ const Home = ({ onNavigate }) => {
       <div style={styles.wrap}>
 
         <div className="gsap-reveal">
-          <h2 style={{ ...styles.sectionIntro, color: theme.text, textShadow: textShadowStyle }}>Explore the Portfolio</h2>
+          <h2 style={{ ...styles.sectionIntro, color: theme.text, textShadow: textShadowStyle }}>Explore My Portfolio!</h2>
         </div>
 
         <div style={styles.aboutPreview}>

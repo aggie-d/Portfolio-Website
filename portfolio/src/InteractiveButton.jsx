@@ -69,7 +69,7 @@ const InteractiveButton = ({ children, style, href, onClick, className = '', ...
           bottom: 0,
           pointerEvents: 'none',
           background: isHovered
-            ? 'radial-gradient(circle 80px at var(--x) var(--y), rgba(255, 255, 255, 0.4), transparent)'
+            ? 'radial-gradient(circle 20px at var(--x) var(--y), rgba(255, 255, 255, 0.4), transparent)'
             : 'transparent',
           transition: 'background 0.2s ease',
           zIndex: 0,

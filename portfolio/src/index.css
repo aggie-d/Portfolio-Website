@@ -196,3 +196,26 @@ textarea {
     order: 1;
   }
 }
+
+/* Hobbies Grid */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 10px; /* 20px between rows, 8px between columns */
+  margin-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .hobbies-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hobbies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+}
+
