@@ -2,6 +2,14 @@ import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
 import profile_pic from './assets/Agronil_Headshot.jpeg'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
+import InteractiveButton from './InteractiveButton'
+// Import timeline event graphics
+import researchImg from './assets/research_event.png'
+import softwareImg from './assets/software_event.png'
+import internshipImg from './assets/internship_event.png'
+import timberwolves_logo from './assets/Minnesota-Timberwolves-Logo-2017-Present.png'
+import liverpool_logo from './assets/Liverpool_FC.svg.png'
+import lions_logo from './assets/Detroit_Lions_logo.svg.png'
 
 const card = {
   border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -35,13 +43,6 @@ const styles = {
     lineHeight: 1,
     letterSpacing: 0,
   },
-  subtitle: {
-    margin: '16px 0 62px',
-    color: 'rgba(241, 245, 249, 0.6)',
-    fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
-    letterSpacing: 0,
-    textTransform: 'uppercase',
-  },
   heading: {
     margin: '0 0 18px',
     color: '#ffffff',
@@ -71,69 +72,95 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
-  profile: {
-    width: 'min(100%, 300px)',
-    margin: '24px auto 0',
-    color: 'rgba(255, 255, 255, 0.86)',
-    fontSize: '1rem',
-    lineHeight: 1.45,
-  },
-  skillsTitle: {
-    margin: '86px 0 32px',
-    color: '#ffffff',
-    fontSize: '1.6rem',
-    fontWeight: 900,
-  },
-  skills: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-    gap: '44px',
-  },
-  skill: {
-    color: 'rgba(248, 250, 252, 0.88)',
-  },
-  iconBox: {
-    width: '58px',
-    height: '58px',
-    marginBottom: '16px',
-    display: 'grid',
-    placeItems: 'center',
-    border: '2px solid rgba(199, 210, 254, 0.65)',
-    borderRadius: '8px',
-    color: 'rgba(226, 232, 240, 0.9)',
-    fontWeight: 900,
-  },
-  skillHeading: {
-    margin: '0 0 14px',
-    color: '#ffffff',
-    fontSize: '1.2rem',
-    fontWeight: 900,
-  },
-  list: {
-    margin: 0,
-    paddingLeft: '24px',
-    fontSize: '1.05rem',
-    lineHeight: 1.36,
-  },
-  button: {
-    minHeight: '42px',
-    marginTop: '14px',
-    padding: '0 18px',
-    border: 0,
-    borderRadius: '7px',
-    color: '#0f172a',
-    background: 'linear-gradient(110deg, #ffffff, #eef2ff 70%, #d8d8ff)',
-    fontWeight: 850,
-    cursor: 'pointer',
-    fontSize: '0.95rem',
-  },
-  ahead: {
-    marginTop: '72px',
-  },
 }
+
+const timelineEvents = [
+  {
+    date: 'September 2024',
+    title: 'Research Apprenticeship',
+    subtitle: 'Undergraduate Research / Machine Learning Lab',
+    description: 'Conducted machine learning research on data modeling, focusing on training efficiency and neural network optimization. Implemented models using PyTorch and tracked performance variations.',
+    image: researchImg,
+  },
+  {
+    date: 'January 2025',
+    title: 'Technical Project Leadership',
+    subtitle: 'Full-Stack Development / Node.js & Docker',
+    description: 'Led a development team of peers to build a containerized data pipeline and dashboard application. Handled system architecture, Docker configurations, and relational database queries.',
+    image: softwareImg,
+  },
+  {
+    date: 'June 2025',
+    title: 'Summer Internship Milestone',
+    subtitle: 'Software Engineering Intern / Tech Integration Team',
+    description: 'Excited to join a leading engineering team as a software engineer intern. Eager to solve real-world problems at scale and gain valuable industry experience.',
+    image: internshipImg,
+  },
+]
 
 const About = () => {
   const { theme } = useTheme()
+
+  const hobbies = [
+    {
+      name: 'Photography',
+      description: 'Capturing nature & cityscapes.',
+      image: profile_pic,
+    },
+    {
+      name: 'Reading',
+      description: 'Sci-fi & tech history.',
+      image: profile_pic,
+    },
+    {
+      name: 'Hiking',
+      description: 'Exploring mountain trails.',
+      image: profile_pic,
+    },
+    {
+      name: 'Cooking',
+      description: 'Experimenting with recipes.',
+      image: profile_pic,
+    },
+    {
+      name: 'Gaming',
+      description: 'Indie & strategy games.',
+      image: profile_pic,
+    },
+    {
+      name: 'Music',
+      description: 'Playing guitar & synth.',
+      image: profile_pic,
+    },
+    {
+      name: 'Coding',
+      description: 'Building open-source tools.',
+      image: profile_pic,
+    },
+    {
+      name: 'Traveling',
+      description: 'Discovering new cultures.',
+      image: profile_pic,
+    },
+  ]
+
+  const sportsTeams = [
+    {
+      name: 'Liverpool',
+      description: 'Soccer',
+      image: liverpool_logo,
+    },
+    {
+      name: 'Timberwolves',
+      description: 'Basketball',
+      image: timberwolves_logo,
+    },
+    {
+      name: 'Lions',
+      description: 'Football',
+      image: lions_logo,
+    },
+  ]
 
   return (
     <section id="about" style={{ ...styles.section, background: theme.page }}>
@@ -147,6 +174,133 @@ const About = () => {
               and low-level computer architecture. This placeholder paragraph can become your personal story,
               academic focus, and professional direction.
             </p>
+
+            <h4 style={{ 
+              color: theme.softText, 
+              fontSize: '0.85rem', 
+              fontWeight: 850, 
+              textTransform: 'uppercase', 
+              letterSpacing: '1.2px',
+              marginTop: '44px',
+              marginBottom: '16px',
+              textAlign: 'center'
+            }}>
+              My Hobbies
+            </h4>
+
+            <div className="hobbies-grid">
+              {hobbies.map((hobby) => (
+                <InteractiveButton 
+                  key={hobby.name} 
+                  style={{ 
+                    padding: '10px', 
+                    borderRadius: '8px', 
+                    background: theme.panel,
+                    border: `1px solid ${theme.panelBorder}`,
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                    textAlign: 'left',
+                    color: 'inherit',
+                    width: '100%',
+                    display: 'block'
+                  }}
+                >
+                  <div style={{
+                    display: 'flex', 
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '8px',
+                    width: '100%'
+                  }}>
+                    {/* Text on the left */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: theme.text, lineHeight: 1.25, marginBottom: '3px' }}>
+                        {hobby.name}
+                      </div>
+                      <div style={{ fontSize: '0.68rem', fontWeight: 400, color: theme.muted, lineHeight: 1.3 }}>
+                        {hobby.description}
+                      </div>
+                    </div>
+                    {/* Image on the right */}
+                    <img 
+                      src={hobby.image} 
+                      alt={`${hobby.name} placeholder`} 
+                      style={{ 
+                        width: '30px', 
+                        height: '30px', 
+                        borderRadius: '5px', 
+                        objectFit: 'contain', 
+                        border: `1px solid ${theme.panelBorder}`,
+                        flexShrink: 0,
+                      }} 
+                    />
+                  </div>
+                </InteractiveButton>
+              ))}
+            </div>
+
+            <h4 style={{ 
+              color: theme.softText, 
+              fontSize: '0.85rem', 
+              fontWeight: 850, 
+              textTransform: 'uppercase', 
+              letterSpacing: '1.2px',
+              marginTop: '24px',
+              marginBottom: '16px',
+              textAlign: 'center'
+            }}>
+              My Teams
+            </h4>
+
+            <InteractiveButton 
+              style={{
+                width: '100%',
+                padding: '20px',
+                borderRadius: '12px',
+                background: theme.panel,
+                border: `1px solid ${theme.panelBorder}`,
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+                display: 'block',
+                cursor: 'default',
+              }}
+            >
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '12px',
+                width: '100%'
+              }}>
+                {sportsTeams.map((team) => (
+                  <div 
+                    key={team.name}
+                    style={{
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '16px 10px', 
+                      borderRadius: '8px', 
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: `1px solid rgba(255, 255, 255, 0.05)`,
+                    }}
+                  >
+                    <img 
+                      src={team.image} 
+                      alt={`${team.name} logo`} 
+                      style={{ 
+                        width: '100%', 
+                        height: '90px', 
+                        objectFit: 'contain', 
+                      }} 
+                    />
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: theme.text, textAlign: 'center', marginTop: '10px' }}>
+                      {team.name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </InteractiveButton>
+
           </Reveal>
 
           <Reveal as="aside" delay={140} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'min(100%, 300px)', margin: '0 auto' }}>
@@ -158,47 +312,103 @@ const About = () => {
         </div>
 
         <Reveal delay={80}>
-          <h3 style={{ ...styles.skillsTitle, color: theme.text }}>CORE RESEARCH & TECHNICAL SKILLS</h3>
+          <h3 style={{ 
+            color: theme.text, 
+            fontSize: '2rem', 
+            fontWeight: 900, 
+            textAlign: 'center', 
+            marginTop: '96px', 
+            marginBottom: '48px',
+            letterSpacing: '0.5px'
+          }}>
+            Milestones & Journey
+          </h3>
         </Reveal>
-        <div style={styles.skills}>
-          <Reveal style={{ ...styles.skill, color: theme.muted }}>
-            <div style={styles.iconBox}>R</div>
-            <h4 style={{ ...styles.skillHeading, color: theme.text }}>RESEARCH APPRENTICE</h4>
-            <ul style={styles.list}>
-              <li>Placeholder laboratory and research group.</li>
-              <li>Research focus area and project context.</li>
-            </ul>
-            <button style={{ ...styles.button, color: theme.buttonText, background: theme.button }}>Engineering Lab page</button>
-          </Reveal>
-          <Reveal delay={120} style={{ ...styles.skill, color: theme.muted }}>
-            <div style={styles.iconBox}>T</div>
-            <h4 style={{ ...styles.skillHeading, color: theme.text }}>TECHNICAL PROFICIENCY</h4>
-            <ul style={styles.list}>
-              <li>Languages and tools: Python, C, SQL, Docker.</li>
-              <li>Frameworks and systems placeholders.</li>
-            </ul>
-          </Reveal>
-          <Reveal delay={240} style={{ ...styles.skill, color: theme.muted }}>
-            <div style={styles.iconBox}>L</div>
-            <h4 style={{ ...styles.skillHeading, color: theme.text }}>PROJECT LEADERSHIP & MENTORSHIP</h4>
-            <ul style={styles.list}>
-              <li>Peer mentorship and team leadership.</li>
-              <li>Club involvement and collaborative projects.</li>
-            </ul>
-          </Reveal>
-        </div>
 
-        <Reveal delay={100} style={styles.ahead}>
-          <h3 style={{ ...styles.heading, color: theme.text }}>LOOKING AHEAD: INTERNSHIP</h3>
-          <p style={{ ...styles.text, color: theme.muted }}>
-            I am excited to apply my skills in a real-world technical setting. Replace this with upcoming
-            internship, research, or career plans.
-          </p>
-          <button style={{ ...styles.button, color: theme.buttonText, background: theme.button }}>VIEW ACADEMIC CV</button>
-        </Reveal>
+        <div className="timeline-container">
+          {/* Vertical Track Line */}
+          <div 
+            className="timeline-line" 
+            style={{ 
+              background: theme.mode === 'dark' ? 'rgba(255, 255, 255, 0.12)' : 'rgba(15, 23, 42, 0.1)' 
+            }} 
+          />
+
+          {timelineEvents.map((event, index) => {
+            const isLeft = index % 2 === 0;
+            return (
+              <div 
+                key={event.title} 
+                className={`timeline-item ${isLeft ? 'timeline-item-left' : 'timeline-item-right'}`}
+              >
+                {/* Scroll Reveal Wrapper */}
+                <Reveal 
+                  delay={index * 120} 
+                  style={{ display: 'flex', width: '100%', flexDirection: 'inherit' }}
+                >
+                  {/* Timeline Dot */}
+                  <div 
+                    className="timeline-dot" 
+                    style={{ 
+                      background: theme.mode === 'dark' 
+                        ? 'linear-gradient(135deg, #a78bfa, #22d3ee)' 
+                        : 'linear-gradient(135deg, #4f46e5, #06b6d4)',
+                      border: `4px solid ${theme.mode === 'dark' ? '#071022' : '#f8fbff'}`
+                    }} 
+                  />
+
+                  {/* Image Column */}
+                  <div className="timeline-image-column">
+                    {event.image && (
+                      <div className="timeline-img-wrapper" style={{ borderColor: theme.panelBorder }}>
+                        <img 
+                          src={event.image} 
+                          alt={`${event.title} illustration`} 
+                          className="timeline-img" 
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Event Card */}
+                  <div 
+                    className="timeline-card" 
+                    style={{ 
+                      background: theme.panel,
+                      border: `1px solid ${theme.panelBorder}`
+                    }}
+                  >
+                    {/* Date at the top of the card */}
+                    <div 
+                      className="timeline-card-date" 
+                      style={{ 
+                        color: theme.mode === 'dark' ? '#22d3ee' : '#4f46e5'
+                      }}
+                    >
+                      {event.date}
+                    </div>
+
+                    <h4 className="timeline-title" style={{ color: theme.text }}>
+                      {event.title}
+                    </h4>
+
+                    <h5 className="timeline-subtitle" style={{ color: theme.softText }}>
+                      {event.subtitle}
+                    </h5>
+
+                    <p className="timeline-desc" style={{ color: theme.muted }}>
+                      {event.description}
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   )
 }
 
 export default About
+

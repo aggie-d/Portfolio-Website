@@ -25,3 +25,197 @@ input,
 textarea {
   font: inherit;
 }
+
+/* Timeline Container */
+.timeline-container {
+  position: relative;
+  max-width: 1050px;
+  margin: 64px auto 0;
+  padding: 0 16px;
+}
+
+/* Vertical Line Track */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Timeline Item */
+.timeline-item {
+  display: flex;
+  margin-bottom: 72px;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternate flex directions */
+.timeline-item-left {
+  flex-direction: row-reverse;
+}
+
+.timeline-item-right {
+  flex-direction: row;
+}
+
+/* Dot on the vertical line */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
+}
+
+/* Image Column (Opposite side of card) */
+.timeline-image-column {
+  width: 50%;
+  padding: 0 44px;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-item-left .timeline-image-column {
+  justify-content: flex-start;
+}
+
+.timeline-item-right .timeline-image-column {
+  justify-content: flex-end;
+}
+
+/* Event Card */
+.timeline-card {
+  width: 44%;
+  padding: 26px 28px;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  z-index: 2;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
+}
+
+/* Card Date */
+.timeline-card-date {
+  font-size: 0.88rem;
+  font-weight: 850;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  font-weight: 950;
+  line-height: 1.25;
+}
+
+.timeline-subtitle {
+  margin: 0 0 16px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  font-style: italic;
+  opacity: 0.88;
+}
+
+.timeline-desc {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+/* Image styling */
+.timeline-img-wrapper {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-item:hover .timeline-img {
+  transform: scale(1.035);
+}
+
+.timeline-item:hover .timeline-img-wrapper {
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive styling */
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 24px;
+    transform: none;
+  }
+
+  .timeline-item {
+    flex-direction: column !important;
+    padding-left: 54px;
+    margin-bottom: 48px;
+  }
+
+  .timeline-dot {
+    left: 24px;
+    top: 24px;
+  }
+
+  .timeline-image-column {
+    width: 100%;
+    padding: 20px 0 0 0;
+    order: 2;
+  }
+
+  .timeline-card {
+    width: 100%;
+    padding: 22px;
+    order: 1;
+  }
+}
+
+/* Hobbies Grid */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 10px; /* 20px between rows, 8px between columns */
+  margin-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .hobbies-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hobbies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+}
+
