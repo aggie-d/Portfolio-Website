@@ -11,8 +11,10 @@ const contactLinks = {
 const styles = {
   section: {
     scrollMarginTop: '86px',
-    minHeight: 'calc(100vh - 85px)',
-    padding: '120px 0',
+    height: 'calc(100vh - 86px)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     background:
       'radial-gradient(circle at 50% 48%, rgba(9, 34, 58, 0.78), transparent 31rem), radial-gradient(circle at 50% 100%, rgba(10, 31, 52, 0.88), transparent 32rem), linear-gradient(180deg, #080b18 0%, #0a1020 100%)',
     position: 'relative',

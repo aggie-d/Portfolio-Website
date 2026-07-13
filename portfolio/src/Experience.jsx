@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
+import placeholderImg from './assets/Agronil_Headshot.jpeg'
 
 const styles = {
   section: {
     scrollMarginTop: '86px',
     minHeight: 'calc(100vh - 85px)',
-    padding: '88px 0 108px',
+    padding: '32px 0 108px',
     background:
       'radial-gradient(circle at 86% 24%, rgba(210, 184, 255, 0.24), transparent 15rem), radial-gradient(circle at 84% 18%, rgba(172, 219, 214, 0.15), transparent 13rem), linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
   },
@@ -22,7 +24,7 @@ const styles = {
     lineHeight: 1.04,
   },
   intro: {
-    maxWidth: '760px',
+    maxWidth: '100%',
     margin: '0 0 46px',
     color: 'rgba(248, 250, 252, 0.82)',
     fontSize: '1.05rem',
@@ -33,6 +35,7 @@ const styles = {
     gap: '22px',
   },
   item: {
+    position: 'relative',
     display: 'grid',
     gridTemplateColumns: '170px minmax(0, 1fr)',
     gap: '28px',
@@ -42,6 +45,23 @@ const styles = {
     borderRadius: '8px',
     background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05))',
     boxShadow: '0 26px 70px rgba(0, 0, 0, 0.28)',
+    cursor: 'pointer',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+  circlesContainer: {
+    position: 'absolute',
+    top: '16px',
+    right: '16px',
+    display: 'flex',
+    gap: '8px',
+  },
+  circleImage: {
+    width: '28px',
+    height: '28px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    border: '2px solid rgba(255, 255, 255, 0.2)',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
   },
   date: {
     margin: 0,
@@ -55,6 +75,7 @@ const styles = {
     color: '#ffffff',
     fontSize: '1.3rem',
     fontWeight: 900,
+    paddingRight: '90px',
   },
   org: {
     margin: '0 0 14px',
@@ -68,44 +89,139 @@ const styles = {
     fontSize: '0.95rem',
     lineHeight: 1.42,
   },
+  expandWrapper: {
+    gridColumn: '1 / -1',
+    display: 'grid',
+    transition: 'grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+  expandInner: {
+    overflow: 'hidden',
+  },
+  expandedBox: {
+    padding: '24px',
+    background: 'rgba(0, 0, 0, 0.25)',
+    borderRadius: '8px',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    display: 'flex',
+    gap: '24px',
+    alignItems: 'flex-start',
+  },
+  expandedImage: {
+    width: '140px',
+    height: '140px',
+    borderRadius: '8px',
+    objectFit: 'cover',
+    flexShrink: 0,
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+  },
+  expandedContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+  },
+  expandedTitle: {
+    margin: 0,
+    color: '#ffffff',
+    fontSize: '1.15rem',
+    fontWeight: 700,
+  },
+  expandedText: {
+    color: 'rgba(248, 250, 252, 0.9)',
+    fontSize: '0.95rem',
+    lineHeight: 1.6,
+    margin: 0,
+  },
 }
 
 const experiences = [
-  ['Summer 2026', 'Software Engineering Intern', 'Company / Organization Placeholder', 'Describe the internship, team, tools, and impact here. Keep this as a concise professional summary.'],
-  ['2025 - Present', 'Research Apprentice', 'Laboratory / University Placeholder', 'Summarize research responsibilities, technical methods, experiments, and collaboration with mentors.'],
-  ['2024 - Present', 'Peer Mentor / Student Leader', 'Program / Club Placeholder', 'Highlight mentoring, leadership, event support, and community involvement.'],
+  {
+    date: 'Summer 2026',
+    role: 'Software Engineering Intern',
+    org: 'Company / Organization Placeholder',
+    text: 'Describe the internship, team, tools, and impact here. Keep this as a concise professional summary.',
+    details: 'During this internship, I developed scalable software solutions and collaborated with cross-functional teams to deliver high-quality features on time. My work improved application performance and user engagement significantly. I also participated in code reviews, agile ceremonies, and system design discussions.'
+  },
+  {
+    date: '2025 - Present',
+    role: 'Research Apprentice',
+    org: 'Laboratory / University Placeholder',
+    text: 'Summarize research responsibilities, technical methods, experiments, and collaboration with mentors.',
+    details: 'I conducted in-depth research on emerging technologies, utilizing advanced data analysis methods and machine learning models. I collaborated closely with principal investigators to publish findings and present at university symposiums. My research focus included optimization algorithms and their practical applications in software systems.'
+  },
+  {
+    date: '2024 - Present',
+    role: 'Peer Mentor / Student Leader',
+    org: 'Program / Club Placeholder',
+    text: 'Highlight mentoring, leadership, event support, and community involvement.',
+    details: 'As a peer mentor, I organized technical workshops, guided underclassmen through complex computer science concepts, and fostered a supportive community environment. I successfully led a team of 10 student organizers to plan the annual departmental hackathon, which saw over 200 participants.'
+  },
 ]
 
 const Experience = () => {
   const { theme } = useTheme()
+  const [expandedIndex, setExpandedIndex] = useState(null)
 
   return (
     <section id="experience" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <Reveal>
-          <h2 style={{ ...styles.title, color: theme.text }}>EXPERIENCE</h2>
+          <h2 style={{ ...styles.title, color: theme.text }}>MY EXPERIENCE</h2>
           <p style={{ ...styles.intro, color: theme.muted }}>
-            A placeholder timeline for internships, research appointments, leadership roles, and professional growth.
-            Replace these entries with your real experience as your portfolio develops.
+            I have extensive professional experience working on teams dedicated to delivering high quality software in both corporate and startup settings.
           </p>
         </Reveal>
 
         <div style={styles.timeline}>
-          {experiences.map(([date, role, org, text], index) => (
-            <Reveal
-              as="article"
-              key={`${date}-${role}`}
-              delay={index * 110}
-              style={{ ...styles.item, borderColor: theme.panelBorder, background: theme.panel }}
-            >
-              <p style={{ ...styles.date, color: theme.softText }}>{date}</p>
-              <div>
-                <h3 style={{ ...styles.role, color: theme.text }}>{role}</h3>
-                <p style={{ ...styles.org, color: theme.softText }}>{org}</p>
-                <p style={{ ...styles.text, color: theme.muted }}>{text}</p>
-              </div>
-            </Reveal>
-          ))}
+          {experiences.map((exp, index) => {
+            const isExpanded = expandedIndex === index
+            return (
+              <Reveal
+                as="article"
+                key={`${exp.date}-${exp.role}`}
+                delay={index * 110}
+                style={{
+                  ...styles.item,
+                  borderColor: isExpanded ? 'rgba(255, 255, 255, 0.45)' : theme.panelBorder,
+                  background: isExpanded ? 'linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08))' : theme.panel,
+                }}
+                onClick={() => setExpandedIndex(isExpanded ? null : index)}
+              >
+                <div style={styles.circlesContainer}>
+                  <img src={placeholderImg} alt="Icon 1" style={styles.circleImage} />
+                  <img src={placeholderImg} alt="Icon 2" style={styles.circleImage} />
+                  <img src={placeholderImg} alt="Icon 3" style={styles.circleImage} />
+                </div>
+
+                <p style={{ ...styles.date, color: theme.softText }}>{exp.date}</p>
+                <div>
+                  <h3 style={{ ...styles.role, color: theme.text }}>{exp.role}</h3>
+                  <p style={{ ...styles.org, color: theme.softText }}>{exp.org}</p>
+                  <p style={{ ...styles.text, color: theme.muted }}>{exp.text}</p>
+                </div>
+
+                <div 
+                  style={{
+                    ...styles.expandWrapper,
+                    gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                    opacity: isExpanded ? 1 : 0,
+                    marginTop: isExpanded ? '16px' : '0px',
+                    pointerEvents: isExpanded ? 'auto' : 'none',
+                  }}
+                >
+                  <div style={styles.expandInner}>
+                    <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
+                      <img src={placeholderImg} alt={exp.role} style={styles.expandedImage} />
+                      <div style={styles.expandedContent}>
+                        <h4 style={styles.expandedTitle}>Project Details</h4>
+                        <p style={styles.expandedText}>{exp.details}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>

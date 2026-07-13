@@ -173,8 +173,8 @@ const styles = {
 const previewTiles = [
   ['About Me', 'Bio', 'A short snapshot of your background, academic focus, and personal story.', '/about', 'READ BIO'],
   ['Experience', 'Work', 'A timeline of internships.', '/experience', 'VIEW EXPERIENCE'],
-  ['Projects', 'Builds', 'Selected applications, tools, .', '/projects', 'VIEW PROJECTS'],
   ['Research', 'Labs', 'A preview of research interests, methods, and academic exploration.', '/research', 'VIEW RESEARCH'],
+  ['Projects', 'Builds', 'Selected applications, tools, .', '/projects', 'VIEW PROJECTS'],
   ['Awards & Honors', 'Recognition', 'Scholarships, competitions, leadership milestones, and achievements.', '/awards', 'VIEW AWARDS'],
   ['Contact', 'Connect', 'Quick links for email, LinkedIn, and code so viewers can reach you.', '/contact', 'GET IN TOUCH'],
 ]

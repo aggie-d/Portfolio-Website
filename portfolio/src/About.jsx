@@ -21,7 +21,7 @@ const card = {
 const styles = {
   section: {
     scrollMarginTop: '86px',
-    padding: '96px 0',
+    padding: '32px 0 96px',
     background:
       'radial-gradient(circle at 85% 34%, rgba(212, 181, 255, 0.25), transparent 18rem), radial-gradient(circle at 82% 24%, rgba(168, 220, 216, 0.16), transparent 16rem), linear-gradient(135deg, #071022 0%, #111b34 54%, #080e1f 100%)',
   },
