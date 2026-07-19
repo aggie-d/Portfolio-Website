@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
 import profile_pic from './assets/Agronil_Headshot.jpeg'
@@ -10,6 +11,15 @@ import internshipImg from './assets/internship_event.png'
 import timberwolves_logo from './assets/Minnesota-Timberwolves-Logo-2017-Present.png'
 import liverpool_logo from './assets/Liverpool_FC.svg.png'
 import lions_logo from './assets/Detroit_Lions_logo.svg.png'
+import TypewriterHeading from './TypewriterHeading'
+import soccer_ball_image from './assets/soccer_ball_image.webp'
+import airplane from './assets/airplane.png'
+import Basketball from './assets/Basketball.png'
+import coding_clipart from './assets/coding_clipart.png'
+import Controller_image from './assets/Controller_image.webp'
+import Headphones_image from './assets/Headphones_image.webp'
+import Movie_image from './assets/Movie_image.png'
+import pikachu from './assets/pikachu.png'
 
 const card = {
   border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -103,44 +113,44 @@ const About = () => {
 
   const hobbies = [
     {
-      name: 'Photography',
-      description: 'Capturing nature & cityscapes.',
-      image: profile_pic,
+      name: 'Building',
+      description: 'From quick tools to full-stack applications, I love to create!',
+      image: coding_clipart,
     },
     {
-      name: 'Reading',
-      description: 'Sci-fi & tech history.',
-      image: profile_pic,
+      name: 'Soccer',
+      description: 'I love watching and playing soccer!',
+      image: soccer_ball_image,
     },
     {
-      name: 'Hiking',
-      description: 'Exploring mountain trails.',
-      image: profile_pic,
-    },
-    {
-      name: 'Cooking',
-      description: 'Experimenting with recipes.',
-      image: profile_pic,
-    },
-    {
-      name: 'Gaming',
-      description: 'Indie & strategy games.',
-      image: profile_pic,
+      name: 'Movies',
+      description: 'My favorites are Into The Spiderverse, Interstellar, and Cars',
+      image: Movie_image,
     },
     {
       name: 'Music',
-      description: 'Playing guitar & synth.',
-      image: profile_pic,
+      description: 'Check out what I\'m listening to on the right!',
+      image: Headphones_image,
     },
     {
-      name: 'Coding',
-      description: 'Building open-source tools.',
-      image: profile_pic,
+      name: 'Gaming',
+      description: 'Fifa, Overwatch, Assassin\'s Creed. Need I say more?',
+      image: Controller_image,
     },
     {
-      name: 'Traveling',
-      description: 'Discovering new cultures.',
-      image: profile_pic,
+      name: 'Basketball',
+      description: 'I\'m a walking bucket (jk I suck)',
+      image: Basketball,
+    },
+    {
+      name: 'Travelling',
+      description: 'I\'ve been to India, Dubai, Puerto Rico and Cancún.',
+      image: airplane,
+    },
+    {
+      name: 'Collecting',
+      description: 'I collect pins, Pokémon cards, Legos, and soccer jerseys. RIP my wallet',
+      image: pikachu,
     },
   ]
 
@@ -162,20 +172,36 @@ const About = () => {
     },
   ]
 
+  const highlightStyle = {
+    background: theme.mode === 'dark' ? 'linear-gradient(135deg, #a78bfa, #22d3ee)' : 'linear-gradient(135deg, #4f46e5, #06b6d4)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 800,
+  }
+
   return (
     <section id="about" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <div style={styles.top}>
-          <Reveal>
-            <h2 style={{ ...styles.title, color: theme.text }}>About Me</h2>
-            <h3 style={styles.heading}> </h3>
-            <p style={{ ...styles.text, color: theme.muted }}>
-              I am a passionate Computer Science student with interests in machine learning, data science,
-              and low-level computer architecture. This placeholder paragraph can become your personal story,
-              academic focus, and professional direction.
-            </p>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Reveal>
+              <h2 style={{ ...styles.title, color: theme.text }}>
+                <TypewriterHeading text="ABOUT ME" delay={120} />
+              </h2>
+              <h3 style={styles.heading}> </h3>
+            </Reveal>
+            <Reveal delay={150}>
+              <p style={{ ...styles.text, color: theme.muted }}>
+              It's nice to meet you! I'm Aggie, a UConn student pursuing a dual-degree in <span style={highlightStyle}>Computer Science</span> and <span style={highlightStyle}>Cognitive Science</span> with a minor in <span style={highlightStyle}>Statistics</span>. 
+              My interests lie in <span style={highlightStyle}>Machine Learning</span>, <span style={highlightStyle}>Data Science</span>, <span style={highlightStyle}>Software Engineering</span>, <span style={highlightStyle}>Low-Level Programming</span>, and <span style={highlightStyle}>AI</span> (who isn't nowadays?). 
+              As a <span style={highlightStyle}>CS<sup>2</sup></span> student, I get to not only apply AI, but also study its history, new advancements, and most importantly, its limitations. 
+              I'm extremely passionate about my work and dedicated to what I do. Take 5 minutes to look around, and if something catches your eye, let me know! 
+              I'm always happy to chat with like-minded people and would love to connect.
+              </p>
+            </Reveal>
 
-            <h4 style={{ 
+            <Reveal delay={300}>
+              <h4 style={{ 
               color: theme.softText, 
               fontSize: '0.85rem', 
               fontWeight: 850, 
@@ -237,9 +263,11 @@ const About = () => {
                   </div>
                 </InteractiveButton>
               ))}
-            </div>
+              </div>
+            </Reveal>
 
-            <h4 style={{ 
+            <Reveal delay={450}>
+              <h4 style={{ 
               color: theme.softText, 
               fontSize: '0.85rem', 
               fontWeight: 850, 
@@ -299,9 +327,9 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </InteractiveButton>
-
-          </Reveal>
+              </InteractiveButton>
+            </Reveal>
+          </div>
 
           <Reveal as="aside" delay={140} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'min(100%, 300px)', margin: '0 auto' }}>
             <div style={{ ...styles.portraitCard, borderColor: theme.panelBorder, background: theme.panel }}>

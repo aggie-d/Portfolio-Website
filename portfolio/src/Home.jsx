@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import TypewriterHeading from './TypewriterHeading'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '@google/model-viewer'
@@ -171,12 +172,12 @@ const styles = {
 }
 
 const previewTiles = [
-  ['About Me', 'Bio', 'A short snapshot of your background, academic focus, and personal story.', '/about', 'READ BIO'],
-  ['Experience', 'Work', 'A timeline of internships.', '/experience', 'VIEW EXPERIENCE'],
-  ['Research', 'Labs', 'A preview of research interests, methods, and academic exploration.', '/research', 'VIEW RESEARCH'],
-  ['Projects', 'Builds', 'Selected applications, tools, .', '/projects', 'VIEW PROJECTS'],
-  ['Awards & Honors', 'Recognition', 'Scholarships, competitions, leadership milestones, and achievements.', '/awards', 'VIEW AWARDS'],
-  ['Contact', 'Connect', 'Quick links for email, LinkedIn, and code so viewers can reach you.', '/contact', 'GET IN TOUCH'],
+  ['About Me', 'Bio', '', '/about', 'READ BIO'],
+  ['Experience', 'Work', '', '/experience', 'VIEW EXPERIENCE'],
+  ['Research', 'Labs', '', '/research', 'VIEW RESEARCH'],
+  ['Projects', 'Builds', '', '/projects', 'VIEW PROJECTS'],
+  ['Awards & Honors', 'Awards', '', '/awards', 'VIEW AWARDS'],
+  ['Contact', 'Connect', '', '/contact', 'GET IN TOUCH'],
 ]
 
 const Home = ({ onNavigate }) => {
@@ -285,7 +286,9 @@ const Home = ({ onNavigate }) => {
       <div style={styles.wrap}>
 
         <div className="gsap-reveal">
-          <h2 style={{ ...styles.sectionIntro, color: theme.text, textShadow: textShadowStyle }}>Explore My Portfolio!</h2>
+          <h2 style={{ ...styles.sectionIntro, color: theme.text, textShadow: textShadowStyle }}>
+            <TypewriterHeading text="Explore My Portfolio!" delay={120} />
+          </h2>
         </div>
 
         <div style={styles.aboutPreview}>

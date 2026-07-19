@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
 import placeholderImg from './assets/Agronil_Headshot.jpeg'
 
@@ -159,7 +160,9 @@ const Research = () => {
     <section id="research" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <Reveal>
-          <h2 style={{ ...styles.title, color: theme.text }}>RESEARCH</h2>
+          <h2 style={{ ...styles.title, color: theme.text }}>
+            <TypewriterHeading text="RESEARCH" delay={120} />
+          </h2>
           <p style={{ ...styles.intro, color: theme.muted }}>
             My academic focus revolves around applied symbolic regression and computer architecture, pushing the boundaries of interpretable machine learning and efficient systems design.
           </p>

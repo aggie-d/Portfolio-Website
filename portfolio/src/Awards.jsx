@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
 import placeholderImg from './assets/Agronil_Headshot.jpeg'
 
@@ -148,7 +149,9 @@ const Awards = () => {
     <section id="awards" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <Reveal>
-          <h2 style={{ ...styles.title, color: theme.text }}>AWARDS & RECOGNITIONS</h2>
+          <h2 style={{ ...styles.title, color: theme.text }}>
+            <TypewriterHeading text="AWARDS & RECOGNITIONS" delay={120} />
+          </h2>
         </Reveal>
         
         <div style={styles.timeline}>

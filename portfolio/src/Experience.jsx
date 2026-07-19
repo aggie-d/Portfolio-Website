@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
 import placeholderImg from './assets/Agronil_Headshot.jpeg'
 
@@ -166,7 +167,9 @@ const Experience = () => {
     <section id="experience" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <Reveal>
-          <h2 style={{ ...styles.title, color: theme.text }}>MY EXPERIENCE</h2>
+          <h2 style={{ ...styles.title, color: theme.text }}>
+            <TypewriterHeading text="MY EXPERIENCE" delay={120} />
+          </h2>
           <p style={{ ...styles.intro, color: theme.muted }}>
             I have extensive professional experience working on teams dedicated to delivering high quality software in both corporate and startup settings.
           </p>
