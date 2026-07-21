@@ -399,7 +399,7 @@ const About = ({ onNavigate }) => {
             marginBottom: '48px',
             letterSpacing: '0.5px'
           }}>
-            Milestones & Journey
+            My Journey
           </h3>
         </Reveal>
 
