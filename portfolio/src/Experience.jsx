@@ -2,7 +2,19 @@ import { useState } from 'react'
 import Reveal from './Reveal'
 import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
-import placeholderImg from './assets/Agronil_Headshot.jpeg'
+import ASMLimg from './assets/ASML_logo.webp'
+import UConn_logo from './assets/University_of_Connecticut_logo.png'
+import NGI_logo from './assets/NGI_logo.webp'
+import Calmare_logo from './assets/Calmare_Therapuetics_logo.webp'
+import Exnuero_logo from './assets/exnuero_logo.jfif'
+import UConn_SOC from './assets/UConn_soc.jpg'
+import Python_logo from './assets/Python.png'
+import github from './assets/github.png'
+import Cplusplus_logo from './assets/C++.png'
+import git from './assets/Git.png'
+import SQL_logo from './assets/SQL.png'
+import Java_logo from './assets/Java.png'
+import docker_logo from './assets/docker.png'
 
 const styles = {
   section: {
@@ -57,8 +69,8 @@ const styles = {
     gap: '8px',
   },
   circleImage: {
-    width: '28px',
-    height: '28px',
+    width: '32px',
+    height: '32px',
     borderRadius: '50%',
     objectFit: 'cover',
     border: '2px solid rgba(255, 255, 255, 0.2)',
@@ -137,25 +149,58 @@ const styles = {
 
 const experiences = [
   {
-    date: 'Summer 2026',
+    date: 'May 2026 - August 2026',
     role: 'Software Engineering Intern',
-    org: 'Company / Organization Placeholder',
-    text: 'Describe the internship, team, tools, and impact here. Keep this as a concise professional summary.',
-    details: 'During this internship, I developed scalable software solutions and collaborated with cross-functional teams to deliver high-quality features on time. My work improved application performance and user engagement significantly. I also participated in code reviews, agile ceremonies, and system design discussions.'
+    org: 'ASML',
+    text: 'Developed an HDR imaging pipeline combining six exposure images into a high-quality diagnostic image and designed a configurable multi-exposure imaging workflow.',
+    details: 'I developed a HDR imaging pipeline that combines six exposure images into a high-quality diagnostic image. I also designed a configurable multi-exposure imaging workflow for the diagnostic camera systems, which drove a 98% increase in diagnostic productivity. Finally, I built an automated validation tool that significantly accelerated the testing and integration of new image-processing capabilities.',
+    image: ASMLimg,
+    images: [Cplusplus_logo, Python_logo, git],
   },
   {
-    date: '2025 - Present',
-    role: 'Research Apprentice',
-    org: 'Laboratory / University Placeholder',
-    text: 'Summarize research responsibilities, technical methods, experiments, and collaboration with mentors.',
-    details: 'I conducted in-depth research on emerging technologies, utilizing advanced data analysis methods and machine learning models. I collaborated closely with principal investigators to publish findings and present at university symposiums. My research focus included optimization algorithms and their practical applications in software systems.'
+    date: 'September 2025 - January 2026',
+    role: 'Chief Technology Officer',
+    org: 'Exneuro',
+    text: 'Led technical development for RaayuXAI, an early-stage Alzheimer\'s disease precision-diagnostic tool leveraging multimodal linguistic biomarkers.',
+    details: 'At Exneuro, I led technical development for RaayuXAI, an early-stage Alzheimer\'s disease (MCI) precision-diagnostic tool leveraging neurobiologically-grounded multimodal linguistic biomarkers. In collaboration with the UConn Health Center, I trained models using patient blood samples and data from DementiaBank. I also refactored the codebase to streamline operations and minimize API calls, achieving a ~90% reduction in application load times.',
+    image: Exnuero_logo,
+    images: [Python_logo, git],
   },
   {
-    date: '2024 - Present',
-    role: 'Peer Mentor / Student Leader',
-    org: 'Program / Club Placeholder',
-    text: 'Highlight mentoring, leadership, event support, and community involvement.',
-    details: 'As a peer mentor, I organized technical workshops, guided underclassmen through complex computer science concepts, and fostered a supportive community environment. I successfully led a team of 10 student organizers to plan the annual departmental hackathon, which saw over 200 participants.'
+    date: 'May 2025 - Present',
+    role: 'S-STEM Peer Mentor',
+    org: 'University of Connecticut',
+    text: 'Coordinate regular meetings with mentee to talk about experiences, advice, guidance, and support as they navigate STEM studies.',
+    details: 'I\'m a peer mentor for a student in the S-STEM program. S-STEM is a scholarship granted to students who demonstrate financial need, or are First-Generation students, and are majoring in a STEM field. As a peer mentor, I coordinate regular meetings with my mentee to talk about my experiences as a student, provide them advice, guidance, and support as they navigate their major and UConn.',
+    image: UConn_logo,
+    images: [],
+  },
+  {
+    date: 'May 2025 - August 2025',
+    role: 'Intern',
+    org: 'Next Generation L.L.C.',
+    text: 'Created and deployed Nous Meeting, an AI-powered note-taking application designed for live Zoom meetings on a Django backend.',
+    details: 'During my internship at Next Generation L.L.C., I created and deployed Nous Meeting, an AI-powered note-taking application designed for live Zoom meetings, built on a robust Django backend. I was responsible for integrating Cohere and OpenAI APIs to develop and evaluate intelligent meeting analysis features, enabling real-time meeting summarization and automated key insight extraction.',
+    image: NGI_logo,
+    images: [Python_logo, git],
+  },
+  {
+    date: 'June 2023 - August 2025',
+    role: 'Intern',
+    org: 'Calmare Therapuetics L.L.C.',
+    text: 'Assisted HealthTech startup operations, inventory management, and testing of patented pain mitigation technologies.',
+    details: 'Calmare Therapuetics is a HealthTech Startup creating pain mitigation systems. At Calmare, I helped keep inventory, tested patented technologies, and assisted in day-to-day operations for the company.',
+    image: Calmare_logo,
+    images: [],
+  },
+  {
+    date: 'June 2023 - August 2025',
+    role: 'Teaching Assistant',
+    org: 'University of Connecticut, School of Computing',
+    text: 'Supported educational CS workshops for high school and under-resourced students, preparing curriculum and translating content to Spanish.',
+    details: 'With the UConn School of Computing, I worked on an educational program for high school students and incoming freshmen/sophomores from under-resourced areas in Hartford, CT. The program provides laptops, WiFi in regions of Hartford, and teaches students about computer science as a field to prepare them to move into more advanced study of CS in the future. A significant portion of the student population are Spanish-only speakers, and I help support workshops and other programs being developed for these students by translating videos for the program into Spanish and assisting students during workshops.',
+    image: UConn_SOC,
+    images: [],
   },
 ]
 
@@ -178,6 +223,7 @@ const Experience = () => {
         <div style={styles.timeline}>
           {experiences.map((exp, index) => {
             const isExpanded = expandedIndex === index
+            const cardIcons = exp.images || [exp.image, exp.image, exp.image]
             return (
               <Reveal
                 as="article"
@@ -191,9 +237,9 @@ const Experience = () => {
                 onClick={() => setExpandedIndex(isExpanded ? null : index)}
               >
                 <div style={styles.circlesContainer}>
-                  <img src={placeholderImg} alt="Icon 1" style={styles.circleImage} />
-                  <img src={placeholderImg} alt="Icon 2" style={styles.circleImage} />
-                  <img src={placeholderImg} alt="Icon 3" style={styles.circleImage} />
+                  {cardIcons.map((imgSrc, i) => (
+                    <img key={i} src={imgSrc} alt={`Icon ${i + 1}`} style={styles.circleImage} />
+                  ))}
                 </div>
 
                 <p style={{ ...styles.date, color: theme.softText }}>{exp.date}</p>
@@ -214,9 +260,9 @@ const Experience = () => {
                 >
                   <div style={styles.expandInner}>
                     <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
-                      <img src={placeholderImg} alt={exp.role} style={styles.expandedImage} />
+                      <img src={exp.image} alt={exp.role} style={styles.expandedImage} />
                       <div style={styles.expandedContent}>
-                        <h4 style={styles.expandedTitle}>Project Details</h4>
+                        <h4 style={styles.expandedTitle}>Role & Impact Details</h4>
                         <p style={styles.expandedText}>{exp.details}</p>
                       </div>
                     </div>
@@ -232,3 +278,5 @@ const Experience = () => {
 }
 
 export default Experience
+
+

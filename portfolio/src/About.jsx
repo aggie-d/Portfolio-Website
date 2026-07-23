@@ -3,8 +3,10 @@ import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
 import profile_pic from './assets/Agronil_Headshot.jpeg'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
+import SpotifyTopTracks from './SpotifyTopTracks'
 import InteractiveButton from './InteractiveButton'
 // Import timeline event graphics
+import SciMaLL from './assets/SciMaLL_image.png'
 import ASMLimg from './assets/ASML_logo.webp'
 import UConn_logo from './assets/University_of_Connecticut_logo.png'
 import SASE_logo from './assets/SASE_logo.png'
@@ -26,6 +28,7 @@ import Controller_image from './assets/xbox_logo.webp'
 import Headphones_image from './assets/Headphones_image.webp'
 import Movie_image from './assets/Movie_image.png'
 import pikachu from './assets/pikachu.png'
+import Optimization_lab from './assets/Optimization_Lab_Image.png'
 
 const card = {
   border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -92,11 +95,18 @@ const styles = {
 
 const timelineEvents = [
   {
+    date: 'August 2026 - Present',
+    title: 'ASML',
+    subtitle: 'Campus Ambassador',
+    description: 'Bringining awareness to the ASML brand at UConn.',
+    image: ASMLimg,
+  },
+  {
     date: 'May 2026 - Present',
-    title: 'Lab',
+    title: 'Scientific & Computational Machine Learning Laboratory (SciMaLL)',
     subtitle: 'Undergraduate Researcher',
     description: 'Helping conduct research under Dr. Qian Yang on implicit Symbolic Regression. I\'m leveraging Python to build automated machine learning evaluation pipelines, eliminating manual analysis and enabling real-time tracking of model performance. I\'m also developing dynamic visualization and scoring tools designed to automatically categorize mathematical models, which greatly accelerates the overall model selection workflow',
-    image: ASMLimg,
+    image: SciMaLL,
   },
   {
     date: 'May 2026 - Present',
@@ -124,7 +134,7 @@ const timelineEvents = [
     title: 'Hybrid Modeling & Systems Engineering Laboratory',
     subtitle: 'Research Apprentice',
     description: 'At the Hybrid Modeling & Systems Engineering Laboratory, I utilized Symbolic Regression (PySR) to optimize feasibility studies for ethylene cracker reactors. I designed a machine learning pipeline to process 500 daily data entries, which cut manual analysis time by roughly 75%. By employing a Sigmoid Loss Function on a dataset of 5,000 datapoints, I successfully trained a model that achieved a 97.1% accuracy score.',
-    image: ASMLimg,
+    image: Optimization_lab,
   },
     {
     date: 'September 2025 - January 2026',
@@ -386,6 +396,7 @@ const About = ({ onNavigate }) => {
               <div style={styles.portrait} aria-label="Portrait of me"></div>
             </div>
             <SpotifyNowPlaying />
+            <SpotifyTopTracks />
           </Reveal>
         </div>
 
