@@ -4,6 +4,13 @@ import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
 import placeholderImg from './assets/Agronil_Headshot.jpeg'
 
+const GithubIcon = () => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+  </svg>
+)
+
+
 const styles = {
   section: {
     scrollMarginTop: '86px',
@@ -115,6 +122,19 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
   },
+  iconButton: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '42px',
+    height: '42px',
+    borderRadius: '50%',
+    color: '#0f172a',
+    background: 'linear-gradient(110deg, #ffffff, #eef2ff 65%, #d8d8ff)',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+  },
   modalOverlay: {
     position: 'fixed',
     top: 0,
@@ -216,6 +236,7 @@ const projects = [
     desc: 'A precision-diagnostic tool using advanced NLP and machine learning. Replace this with your real project summary.',
     fullDesc: 'This project involved building a robust tool using advanced NLP and machine learning techniques to diagnose issues with precision. It successfully parsed multimodal inputs and provided accurate outputs, earning first place at the recent pitch event. Our focus was on creating a highly scalable and resilient architecture. We gathered an extensive dataset spanning several modalities and achieved an impressive F1 score in our final benchmarks.',
     techs: ['Python', 'TensorFlow', 'React', 'AWS'],
+    githubUrl: 'https://github.com/yourusername/project-alpha',
   },
   {
     name: 'Project Beta',
@@ -224,6 +245,7 @@ const projects = [
     desc: 'An AI-driven application for meeting transcription, summaries, and task extraction. Replace with your case study.',
     fullDesc: 'An AI-driven application designed to automate meeting transcriptions and generate concise summaries. We used OpenAI APIs to extract actionable tasks directly from the conversation, improving team productivity. The frontend was built with modern UI frameworks to ensure a snappy user experience. Features include live audio streaming, speaker diarization, and automatic syncing to Jira and Asana.',
     techs: ['Django', 'Tailwind CSS', 'OpenAI API', 'WebSockets'],
+    githubUrl: 'https://github.com/yourusername/project-beta',
   },
   {
     name: 'Project Gamma',
@@ -232,6 +254,7 @@ const projects = [
     desc: 'A web platform for tracking key metrics, visualizing patterns, and presenting usable insights.',
     fullDesc: 'A comprehensive web platform that integrates with multiple data sources to provide real-time tracking of key performance metrics. We utilized D3.js for intricate data visualizations and built a modular dashboard where users can customize their views according to their specific needs. The application handles high-frequency data ingestion and caches it via Redis for instant load times.',
     techs: ['React', 'D3.js', 'Node.js', 'Redis'],
+    githubUrl: 'https://github.com/yourusername/project-gamma',
   },
   {
     name: 'Project Delta',
@@ -240,6 +263,7 @@ const projects = [
     desc: 'A low-level or developer productivity project with placeholder results, stack details, and links.',
     fullDesc: 'This utility was designed to enhance developer productivity by providing a low-level tooling interface. It intercepts system calls to log performance bottlenecks and generates detailed reports. It integrates seamlessly into existing CI/CD pipelines, saving hours of manual debugging. We wrote the core logic in Rust to guarantee memory safety and optimal execution speed across platforms.',
     techs: ['Rust', 'Docker', 'Bash', 'GitHub Actions'],
+    githubUrl: 'https://github.com/yourusername/project-delta',
   },
 ]
 
@@ -293,11 +317,14 @@ const Projects = () => {
                     <img src={placeholderImg} alt="Tech 3" style={styles.techIcon} />
                   </div>
                   <a 
-                    href="#"
-                    style={{ ...styles.button, color: theme.buttonText, background: theme.button }}
+                    href={proj.githubUrl || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ ...styles.iconButton, color: theme.buttonText, background: theme.button }}
                     onClick={(e) => { e.stopPropagation(); }}
+                    title="View Source on GitHub"
                   >
-                    Link to Demo
+                    <GithubIcon />
                   </a>
                 </div>
               </Reveal>
@@ -336,17 +363,18 @@ const Projects = () => {
                   <strong style={{ color: '#ffffff' }}>Technologies Used:</strong> {selectedProject.techs.join(', ')}
                 </p>
                 <a 
-                  href="#" 
+                  href={selectedProject.githubUrl || '#'} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{ 
-                    ...styles.button, 
+                    ...styles.iconButton, 
                     color: theme.buttonText, 
                     background: theme.button, 
-                    display: 'inline-flex',
                     marginTop: '20px'
                   }}
-                  onClick={(e) => e.preventDefault()}
+                  title="View Source on GitHub"
                 >
-                  Link to Demo
+                  <GithubIcon />
                 </a>
               </div>
             </div>

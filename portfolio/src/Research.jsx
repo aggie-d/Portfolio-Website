@@ -9,6 +9,7 @@ import PYsr_logo from './assets/PYsr.png'
 import Pandas_logo from './assets/Pandas.png'
 import matplotlib from './assets/Matplotlib.png'
 import latex from './assets/Overleaf.png'
+import CMOC_video from './assets/Final_CMOC_Fixed.mp4'
 
 const styles = {
   section: {
@@ -152,6 +153,16 @@ const researchEntries = [
     images: [Python_logo, PYsr_logo, matplotlib],
   },
   {
+    date: 'March 2026',
+    role: 'Comparative Tele-Traffic Analysis for Zoom Bot Infrastructure',
+    org: 'Poster Paper',
+    text: 'Published to the 34th annual CMOC Symposium',
+    details: 'Our study presents a comparative teletraffic analysis of "Power User" versus "Regular User" profiles using Erlang-A, B, and C modeling conferencing frameworks.',
+    image: null,
+    images: [],
+    video: CMOC_video, // TODO: Replace with your actual video URL or import a local video file
+  },
+  {
     date: 'September 2025 - April 2026',
     role: 'Research Apprentice',
     org: 'Hybrid Modeling & Systems Engineering Laboratory',
@@ -218,10 +229,32 @@ const Research = () => {
                 >
                   <div style={styles.expandInner}>
                     <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
-                      <img src={res.image} alt={res.role} style={styles.expandedImage} />
+                      {res.image && <img src={res.image} alt={res.role} style={styles.expandedImage} />}
                       <div style={styles.expandedContent}>
                         <h4 style={styles.expandedTitle}>Research Details</h4>
                         <p style={styles.expandedText}>{res.details}</p>
+                        {res.video && (
+                          <div style={{ marginTop: '16px', position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px' }}>
+                            {res.video.includes('youtube.com') || res.video.includes('youtu.be') ? (
+                              <iframe 
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                src={res.video.includes('watch?v=') ? res.video.replace('watch?v=', 'embed/') : res.video} 
+                                title="Research Video"
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowFullScreen>
+                              </iframe>
+                            ) : (
+                              <video 
+                                key={res.video}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#000' }}
+                                controls>
+                                <source src={res.video} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
