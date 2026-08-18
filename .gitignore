@@ -1,6 +1,12 @@
 /venv
 /node_modules
-.env.local
 .env
+.env.local
+.env.*
 /.vercel
 spotifyaccess.js
+local.settings.json
+*.log
+.DS_Store
+dist/
+dist-ssr/

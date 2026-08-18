@@ -1,20 +1,28 @@
-# Use an official Node.js LTS (v22) as a parent image
-FROM node:22-alpine
+# Stage 1: Build the Vite React application
+FROM node:22-alpine AS builder
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json first to leverage Docker layer caching
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install project dependencies
+# Install dependencies
 RUN npm install
 
 # Copy the rest of the application code
 COPY . .
 
-# Expose port 5173 (default for Vite)
-EXPOSE 5173
+# Build the application
+RUN npm run build
 
-# Start the Vite server, exposing it to the network so we can access it outside the container
-CMD ["npm", "run", "dev", "--", "--host"]
+# Stage 2: Serve the application with Nginx
+FROM nginx:alpine
+
+# Copy the build output to replace the default nginx contents.
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
