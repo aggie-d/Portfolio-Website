@@ -81,10 +81,11 @@ textarea {
 
 /* Image Column (Opposite side of card) */
 .timeline-image-column {
-  width: 50%;
-  padding: 0 44px;
+  width: 44%;
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  position: relative;
 }
 
 .timeline-item-left .timeline-image-column {
@@ -142,10 +143,13 @@ textarea {
 
 /* Image styling */
 .timeline-img-wrapper {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 10px;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -188,6 +192,13 @@ textarea {
     width: 100%;
     padding: 20px 0 0 0;
     order: 2;
+    align-items: center;
+  }
+
+  .timeline-img-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    height: auto;
   }
 
   .timeline-card {

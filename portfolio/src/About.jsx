@@ -1,15 +1,34 @@
+import React, { useState, useEffect } from 'react'
 import Reveal from './Reveal'
 import { useTheme } from './ThemeContext'
 import profile_pic from './assets/Agronil_Headshot.jpeg'
 import SpotifyNowPlaying from './SpotifyNowPlaying'
+import SpotifyTopTracks from './SpotifyTopTracks'
 import InteractiveButton from './InteractiveButton'
 // Import timeline event graphics
-import researchImg from './assets/research_event.png'
+import SciMaLL from './assets/SciMaLL_image.png'
+import ASMLimg from './assets/ASML_logo.webp'
+import UConn_logo from './assets/University_of_Connecticut_logo.png'
+import SASE_logo from './assets/SASE_logo.png'
+import UConn_SOC from './assets/UConn_soc.jpg'
+import NGI_logo from './assets/NGI_logo.webp'
+import Calmare_logo from './assets/Calmare_Therapuetics_logo.webp'
+import Exnuero_logo from './assets/exnuero_logo.jfif'
 import softwareImg from './assets/software_event.png'
 import internshipImg from './assets/internship_event.png'
 import timberwolves_logo from './assets/Minnesota-Timberwolves-Logo-2017-Present.png'
 import liverpool_logo from './assets/Liverpool_FC.svg.png'
 import lions_logo from './assets/Detroit_Lions_logo.svg.png'
+import TypewriterHeading from './TypewriterHeading'
+import soccer_ball_image from './assets/soccer_ball_image.webp'
+import airplane from './assets/airplane.png'
+import Basketball from './assets/Basketball.png'
+import coding_clipart from './assets/coding_clipart.png'
+import Controller_image from './assets/xbox_logo.webp'
+import Headphones_image from './assets/Headphones_image.webp'
+import Movie_image from './assets/Movie_image.png'
+import pikachu from './assets/pikachu.png'
+import Optimization_lab from './assets/Optimization_Lab_Image.png'
 
 const card = {
   border: '1px solid rgba(226, 232, 240, 0.34)',
@@ -76,71 +95,120 @@ const styles = {
 
 const timelineEvents = [
   {
-    date: 'September 2024',
-    title: 'Research Apprenticeship',
-    subtitle: 'Undergraduate Research / Machine Learning Lab',
-    description: 'Conducted machine learning research on data modeling, focusing on training efficiency and neural network optimization. Implemented models using PyTorch and tracked performance variations.',
-    image: researchImg,
+    date: 'August 2026 - Present',
+    title: 'ASML',
+    subtitle: 'Campus Ambassador',
+    description: 'Bringining awareness to the ASML brand at UConn.',
+    image: ASMLimg,
   },
   {
-    date: 'January 2025',
-    title: 'Technical Project Leadership',
-    subtitle: 'Full-Stack Development / Node.js & Docker',
-    description: 'Led a development team of peers to build a containerized data pipeline and dashboard application. Handled system architecture, Docker configurations, and relational database queries.',
-    image: softwareImg,
+    date: 'May 2026 - Present',
+    title: 'Scientific & Computational Machine Learning Laboratory (SciMaLL)',
+    subtitle: 'Undergraduate Researcher',
+    description: 'Helping conduct research under Dr. Qian Yang on implicit Symbolic Regression. I\'m leveraging Python to build automated machine learning evaluation pipelines, eliminating manual analysis and enabling real-time tracking of model performance. I\'m also developing dynamic visualization and scoring tools designed to automatically categorize mathematical models, which greatly accelerates the overall model selection workflow',
+    image: SciMaLL,
   },
   {
-    date: 'June 2025',
-    title: 'Summer Internship Milestone',
-    subtitle: 'Software Engineering Intern / Tech Integration Team',
-    description: 'Excited to join a leading engineering team as a software engineer intern. Eager to solve real-world problems at scale and gain valuable industry experience.',
-    image: internshipImg,
+    date: 'May 2026 - Present',
+    title: 'Society of Asian Scientists and Engineers (SASE)',
+    subtitle: 'Analytics Chair',
+    description: 'As the Analytics Chair for SASE, I collect and analyze data from our weekly meetings to drive member participation and corporate engagement. To streamline administrative overhead, I built an automated pipeline using Python and SQL to accurately track member attendance and engagement trends.',
+    image: SASE_logo,
+  },
+    {
+    date: 'May 2025 - Present',
+    title: 'Univeristy of Connecticut',
+    subtitle: 'S-STEM Peer Mentor',
+    description: 'I\'m a peer mentor for a student in the S-STEM program. S-STEM is a scholarship granted to students who demonstrate financial need, or are First-Generation students, and are majoring in a STEM field. As a peer mentor, I coordinate regular meetings with my mentee to talk about my experiences as a student, provide them advice, guidance, and support as they navigate their major and UConn.',
+    image: UConn_logo,
+  },
+  {
+    date: 'May 2026 - August 2026',
+    title: 'ASML',
+    subtitle: 'Software Engineering Intern',
+    description: 'I developed a HDR imaging pipeline that combines six exposure images into a high-quality diagnostic image. I also designed a configurable multi-exposure imaging workflow for the diagnostic camera systems, which drove a 98% increase in diagnostic productivity. Finally, I built an automated validation tool that significantly accelerated the testing and integration of new image-processing capabilities.',
+    image: ASMLimg,
+  },
+  {
+    date: 'September 2025 - April 2026',
+    title: 'Hybrid Modeling & Systems Engineering Laboratory',
+    subtitle: 'Research Apprentice',
+    description: 'At the Hybrid Modeling & Systems Engineering Laboratory, I utilized Symbolic Regression (PySR) to optimize feasibility studies for ethylene cracker reactors. I designed a machine learning pipeline to process 500 daily data entries, which cut manual analysis time by roughly 75%. By employing a Sigmoid Loss Function on a dataset of 5,000 datapoints, I successfully trained a model that achieved a 97.1% accuracy score.',
+    image: Optimization_lab,
+  },
+    {
+    date: 'September 2025 - January 2026',
+    title: 'Exneuro',
+    subtitle: 'Chief Technology Officer',
+    description: 'At Exneuro, I led technical development for RaayuXAI, an early-stage Alzheimer\'s disease (MCI) precision-diagnostic tool leveraging neurobiologically-grounded multimodal linguistic biomarkers. In collaboration with the UConn Health Center, I trained models using patient blood samples and data from DementiaBank. I also refactored the codebase to streamline operations and minimize API calls, achieving a ~90% reduction in application load times.',
+    image: Exnuero_logo,
+  },
+      {
+    date: 'May 2025 - August 2025',
+    title: 'Next Generation L.L.C.',
+    subtitle: 'Intern',
+    description: 'During my internship at Next Generation L.L.C., I created and deployed Nous Meeting, an AI-powered note-taking application designed for live Zoom meetings, built on a robust Django backend. I was responsible for integrating Cohere and OpenAI APIs to develop and evaluate intelligent meeting analysis features, enabling real-time meeting summarization and automated key insight extraction.',
+    image: NGI_logo,
+  },
+  {
+    date: 'June 2023 - August 2025',
+    title: 'Calmare Therapuetics L.L.C.',
+    subtitle: 'Intern',
+    description: 'Calmare Therapuetics is a HealthTech Startup creating pain mitigation systems. At Calmare, I helped keep inventory, tested patented technologies, and assisted in day-to-day operations for the company.',
+    image: Calmare_logo,
+  },
+  {
+    date: 'June 2023 - August 2025',
+    title: 'University of Connecticut, School of Computing',
+    subtitle: 'Teaching Assistant',
+    description: 'With the UConn School of Computing, I worked on an educational program for high school students and incoming freshmen/sophomores from under-resourced areas in Hartford, CT. The program provides laptops, WiFi in regions of Hartford, and teaches students about computer science as a field to prepare them to move into more advanced study of CS in the future. A significant portion of the student population are Spanish-only speakers, and I help support workshops and other programs being developed for these students by translating videos for the program into Spanish and assisting students during workshops.',
+    image: UConn_SOC,
   },
 ]
 
-const About = () => {
+const About = ({ onNavigate }) => {
   const { theme } = useTheme()
 
   const hobbies = [
     {
-      name: 'Photography',
-      description: 'Capturing nature & cityscapes.',
-      image: profile_pic,
+      name: 'Building',
+      description: 'From quick tools to full-stack applications, I love to create!',
+      image: coding_clipart,
     },
     {
-      name: 'Reading',
-      description: 'Sci-fi & tech history.',
-      image: profile_pic,
+      name: 'Soccer',
+      description: 'I love watching and playing soccer!',
+      image: soccer_ball_image,
     },
     {
-      name: 'Hiking',
-      description: 'Exploring mountain trails.',
-      image: profile_pic,
-    },
-    {
-      name: 'Cooking',
-      description: 'Experimenting with recipes.',
-      image: profile_pic,
-    },
-    {
-      name: 'Gaming',
-      description: 'Indie & strategy games.',
-      image: profile_pic,
+      name: 'Movies',
+      description: 'My favorites are Into The Spiderverse, Interstellar, and Cars',
+      image: Movie_image,
     },
     {
       name: 'Music',
-      description: 'Playing guitar & synth.',
-      image: profile_pic,
+      description: 'Check out what I\'m listening to on the right!',
+      image: Headphones_image,
     },
     {
-      name: 'Coding',
-      description: 'Building open-source tools.',
-      image: profile_pic,
+      name: 'Gaming',
+      description: 'Fifa, Overwatch, Assassin\'s Creed. Need I say more?',
+      image: Controller_image,
     },
     {
-      name: 'Traveling',
-      description: 'Discovering new cultures.',
-      image: profile_pic,
+      name: 'Basketball',
+      description: 'I\'m a walking bucket (jk I suck)',
+      image: Basketball,
+    },
+    {
+      name: 'Travelling',
+      description: 'I\'ve been to India, Dubai, Puerto Rico and Cancún.',
+      image: airplane,
+    },
+    {
+      name: 'Collecting',
+      description: 'I collect pins, Pokémon cards, Legos, and soccer jerseys. RIP my wallet',
+      image: pikachu,
     },
   ]
 
@@ -162,20 +230,38 @@ const About = () => {
     },
   ]
 
+  const highlightStyle = {
+    backgroundImage: theme.mode === 'dark' ? 'linear-gradient(135deg, #a78bfa, #22d3ee)' : 'linear-gradient(135deg, #4f46e5, #06b6d4)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    color: 'transparent',
+    fontWeight: 800,
+  }
+
   return (
     <section id="about" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <div style={styles.top}>
-          <Reveal>
-            <h2 style={{ ...styles.title, color: theme.text }}>About Me</h2>
-            <h3 style={styles.heading}> </h3>
-            <p style={{ ...styles.text, color: theme.muted }}>
-              I am a passionate Computer Science student with interests in machine learning, data science,
-              and low-level computer architecture. This placeholder paragraph can become your personal story,
-              academic focus, and professional direction.
-            </p>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Reveal>
+              <h2 style={{ ...styles.title, color: theme.text }}>
+                <TypewriterHeading text="ABOUT ME" delay={120} />
+              </h2>
+              <h3 style={styles.heading}> </h3>
+            </Reveal>
+            <Reveal delay={150}>
+              <p style={{ ...styles.text, color: theme.muted }}>
+              It's nice to meet you! I'm Aggie, a UConn student pursuing a dual-degree in <span style={highlightStyle}>Computer Science</span> and <span style={highlightStyle}>Cognitive Science</span> with a minor in <span style={highlightStyle}>Statistics</span>. 
+              My interests lie in <span style={highlightStyle}>Machine Learning</span>, <span style={highlightStyle}>Data Science</span>, <span style={highlightStyle}>Software Engineering</span>, <span style={highlightStyle}>Low-Level Programming</span>, and <span style={highlightStyle}>AI</span> (who isn't nowadays?). 
+              As a <span style={highlightStyle}>CS<sup>2</sup></span> student, I get to not only apply AI, but also study its history, new advancements, and most importantly, its limitations. 
+              I'm extremely passionate about my work and dedicated to what I do. Take 5 minutes to look around, and if something catches your eye, let me know! 
+              I'm always happy to chat with like-minded people and would love to <a href="/contact" style={{ color: theme.mode === 'dark' ? '#22d3ee' : '#4f46e5', textDecoration: 'underline', cursor: 'pointer', fontWeight: 600 }} onClick={(e) => { e.preventDefault(); onNavigate('/contact'); }}>connect</a>.
+              </p>
+            </Reveal>
 
-            <h4 style={{ 
+            <Reveal delay={300}>
+              <h4 style={{ 
               color: theme.softText, 
               fontSize: '0.85rem', 
               fontWeight: 850, 
@@ -237,9 +323,11 @@ const About = () => {
                   </div>
                 </InteractiveButton>
               ))}
-            </div>
+              </div>
+            </Reveal>
 
-            <h4 style={{ 
+            <Reveal delay={450}>
+              <h4 style={{ 
               color: theme.softText, 
               fontSize: '0.85rem', 
               fontWeight: 850, 
@@ -299,15 +387,16 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </InteractiveButton>
-
-          </Reveal>
+              </InteractiveButton>
+            </Reveal>
+          </div>
 
           <Reveal as="aside" delay={140} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'min(100%, 300px)', margin: '0 auto' }}>
             <div style={{ ...styles.portraitCard, borderColor: theme.panelBorder, background: theme.panel }}>
               <div style={styles.portrait} aria-label="Portrait of me"></div>
             </div>
             <SpotifyNowPlaying />
+            <SpotifyTopTracks />
           </Reveal>
         </div>
 
@@ -321,7 +410,7 @@ const About = () => {
             marginBottom: '48px',
             letterSpacing: '0.5px'
           }}>
-            Milestones & Journey
+            My Journey
           </h3>
         </Reveal>
 
@@ -344,7 +433,7 @@ const About = () => {
                 {/* Scroll Reveal Wrapper */}
                 <Reveal 
                   delay={index * 120} 
-                  style={{ display: 'flex', width: '100%', flexDirection: 'inherit' }}
+                  style={{ display: 'flex', width: '100%', flexDirection: 'inherit', justifyContent: 'space-between' }}
                 >
                   {/* Timeline Dot */}
                   <div 

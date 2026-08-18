@@ -1,7 +1,15 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
-import placeholderImg from './assets/Agronil_Headshot.jpeg'
+import SciMaLL from './assets/SciMaLL_image.png'
+import Optimization_lab from './assets/Optimization_Lab_Image.png'
+import Python_logo from './assets/Python.png'
+import PYsr_logo from './assets/PYsr.png'
+import Pandas_logo from './assets/Pandas.png'
+import matplotlib from './assets/Matplotlib.png'
+import latex from './assets/Overleaf.png'
+import CMOC_video from './assets/Final_CMOC_Fixed.mp4'
 
 const styles = {
   section: {
@@ -56,8 +64,8 @@ const styles = {
     gap: '8px',
   },
   circleImage: {
-    width: '28px',
-    height: '28px',
+    width: '32px',
+    height: '32px',
     borderRadius: '50%',
     objectFit: 'cover',
     border: '2px solid rgba(255, 255, 255, 0.2)',
@@ -136,19 +144,33 @@ const styles = {
 
 const researchEntries = [
   {
-    date: 'Ongoing',
-    role: 'Applied Symbolic Regression',
-    org: 'Research Apprentice, Placeholder Modeling & Systems Engineering Lab',
-    text: 'Working on optimization and interpretable models using placeholder libraries and experimental datasets.',
-    details: 'Replace this with the research problem, methods, and outcomes. We explored the performance tradeoffs between various evolutionary algorithms to extract symbolic formulas from complex datasets. The findings were presented at our departmental symposium.'
+    date: 'May 2026 - Present',
+    role: 'Undergraduate Researcher',
+    org: 'Scientific & Computational Machine Learning Laboratory (SciMaLL)',
+    text: 'Helping conduct research under Dr. Qian Yang on implicit Symbolic Regression, building automated machine learning evaluation pipelines and dynamic visualization tools.',
+    details: 'Helping conduct research under Dr. Qian Yang on implicit Symbolic Regression. I\'m leveraging Python to build automated machine learning evaluation pipelines, eliminating manual analysis and enabling real-time tracking of model performance. I\'m also developing dynamic visualization and scoring tools designed to automatically categorize mathematical models, which greatly accelerates the overall model selection workflow.',
+    image: SciMaLL,
+    images: [Python_logo, PYsr_logo, matplotlib],
   },
   {
-    date: 'Past',
-    role: 'Computer Architecture',
-    org: 'University Name',
-    text: 'Investigating low-level hardware design, logic gate configuration, and assembly concepts.',
-    details: 'Replace this with architecture tools, coursework, or research details. We simulated complex microprocessor designs in Logisim and analyzed power consumption versus performance throughput on a cycle-by-cycle basis.'
-  }
+    date: 'March 2026',
+    role: 'Comparative Tele-Traffic Analysis for Zoom Bot Infrastructure',
+    org: 'Poster Paper',
+    text: 'Published to the 34th annual CMOC Symposium',
+    details: 'Our study presents a comparative teletraffic analysis of "Power User" versus "Regular User" profiles using Erlang-A, B, and C modeling conferencing frameworks.',
+    image: null,
+    images: [],
+    video: CMOC_video, // TODO: Replace with your actual video URL or import a local video file
+  },
+  {
+    date: 'September 2025 - April 2026',
+    role: 'Research Apprentice',
+    org: 'Hybrid Modeling & Systems Engineering Laboratory',
+    text: 'Utilized Symbolic Regression (PySR) to optimize feasibility studies for ethylene cracker reactors, building ML pipelines that achieved 97.1% accuracy.',
+    details: 'At the Hybrid Modeling & Systems Engineering Laboratory, I utilized Symbolic Regression (PySR) to optimize feasibility studies for ethylene cracker reactors. I designed a machine learning pipeline to process 500 daily data entries, which cut manual analysis time by roughly 75%. By employing a Sigmoid Loss Function on a dataset of 5,000 datapoints, I successfully trained a model that achieved a 97.1% accuracy score.',
+    image: Optimization_lab,
+    images: [Python_logo, PYsr_logo, latex, matplotlib],
+  },
 ]
 
 const Research = () => {
@@ -159,7 +181,9 @@ const Research = () => {
     <section id="research" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <Reveal>
-          <h2 style={{ ...styles.title, color: theme.text }}>RESEARCH</h2>
+          <h2 style={{ ...styles.title, color: theme.text }}>
+            <TypewriterHeading text="RESEARCH" delay={120} />
+          </h2>
           <p style={{ ...styles.intro, color: theme.muted }}>
             My academic focus revolves around applied symbolic regression and computer architecture, pushing the boundaries of interpretable machine learning and efficient systems design.
           </p>
@@ -168,6 +192,7 @@ const Research = () => {
         <div style={styles.timeline}>
           {researchEntries.map((res, index) => {
             const isExpanded = expandedIndex === index
+            const cardIcons = res.images || [res.image, res.image, res.image]
             return (
               <Reveal
                 as="article"
@@ -181,9 +206,9 @@ const Research = () => {
                 onClick={() => setExpandedIndex(isExpanded ? null : index)}
               >
                 <div style={styles.circlesContainer}>
-                  <img src={placeholderImg} alt="Icon 1" style={styles.circleImage} />
-                  <img src={placeholderImg} alt="Icon 2" style={styles.circleImage} />
-                  <img src={placeholderImg} alt="Icon 3" style={styles.circleImage} />
+                  {cardIcons.map((imgSrc, i) => (
+                    <img key={i} src={imgSrc} alt={`Icon ${i + 1}`} style={styles.circleImage} />
+                  ))}
                 </div>
 
                 <p style={{ ...styles.date, color: theme.softText }}>{res.date}</p>
@@ -204,10 +229,32 @@ const Research = () => {
                 >
                   <div style={styles.expandInner}>
                     <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
-                      <img src={placeholderImg} alt={res.role} style={styles.expandedImage} />
+                      {res.image && <img src={res.image} alt={res.role} style={styles.expandedImage} />}
                       <div style={styles.expandedContent}>
                         <h4 style={styles.expandedTitle}>Research Details</h4>
                         <p style={styles.expandedText}>{res.details}</p>
+                        {res.video && (
+                          <div style={{ marginTop: '16px', position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px' }}>
+                            {res.video.includes('youtube.com') || res.video.includes('youtu.be') ? (
+                              <iframe 
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                                src={res.video.includes('watch?v=') ? res.video.replace('watch?v=', 'embed/') : res.video} 
+                                title="Research Video"
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowFullScreen>
+                              </iframe>
+                            ) : (
+                              <video 
+                                key={res.video}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#000' }}
+                                controls>
+                                <source src={res.video} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -222,3 +269,5 @@ const Research = () => {
 }
 
 export default Research
+
+

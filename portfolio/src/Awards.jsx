@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
 import placeholderImg from './assets/Agronil_Headshot.jpeg'
+import CMOCawardimg from './assets/CMOC_Award.png'
 
 const styles = {
   section: {
@@ -82,15 +84,17 @@ const styles = {
     borderRadius: '8px',
     border: '1px solid rgba(255, 255, 255, 0.08)',
     display: 'flex',
+    flexDirection: 'column',
     gap: '24px',
     alignItems: 'flex-start',
   },
   expandedImage: {
-    width: '140px',
-    height: '140px',
+    maxWidth: '100%',
+    maxHeight: '600px',
+    height: 'auto',
     borderRadius: '8px',
-    objectFit: 'cover',
-    flexShrink: 0,
+    objectFit: 'contain',
+    alignSelf: 'center',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
   },
@@ -115,29 +119,36 @@ const styles = {
 
 const awards = [
   {
-    title: 'First Place, Placeholder Pitch Event',
-    date: 'Jan 2026',
-    summary: 'Developed a placeholder tool using NLP and machine learning. Replace this with the award context and result.',
-    details: 'This award was given to our team for creating an innovative NLP tool that achieved state of the art results. We competed against 50 other teams and secured first place.'
+    title: 'Dean\'s List',
+    date: 'Fall 2024, Fall 2025, Spring 2026',
+    summary: 'Awarded by the UConn College of Engineering and the College of Liberal Arts and Science ',
+    details: 'Awarded to the students in the upper 25th percentile in the College.',
   },
   {
-    title: 'University Scholar Recognition',
-    date: 'Fall 2025',
-    summary: 'A placeholder scholarship or academic recognition description can live here.',
-    details: 'Received this honor in recognition of maintaining a 4.0 GPA across all computer science coursework while actively participating in research and mentorship programs.'
+    title: 'Excellence in Reliability Award',
+    date: 'May 2026',
+    summary: 'Awarded by UConn Vergnano Institute of of Impact (VII).',
+    details: 'Received for my dedication and effort to the Society of Asian Scientists and Engineers',
   },
   {
-    title: 'Selected Peer Mentor',
-    date: '2024 - 2025',
-    summary: 'Mentorship, leadership, and community contribution placeholder text.',
-    details: 'Selected from a pool of over 100 applicants to serve as a peer mentor. Provided guidance, tutoring, and support to freshmen computer science students to help them succeed in their first year.'
+    title: 'Best Poster Paper: Undergraduate Student Category Award',
+    date: 'March 2026',
+    summary: 'Awarded by the CMOC Symposium',
+    details: 'Received for my research titled "Comparative Tele-Traffic Analysis for Zoom Bot Infrastructure". This research paper focused on optimizing the infrastructure for AI agents in the application of Zoom note-taking bots. \n This research was inspired by the work I did at Next Generation Innovations for Nous Meeting. ',
+    image: CMOCawardimg 
   },
   {
-    title: 'First in a Hackathon',
-    date: 'Oct 2024',
-    summary: 'A short hackathon summary with team, project, and impact placeholders.',
-    details: 'Our team built a real-time web application to solve local community issues. We utilized React, Node, and Firebase to develop the solution within 48 hours, ultimately winning the grand prize.'
-  }
+    title: 'New England Scholar',
+    date: '2025',
+    summary: 'Awarded by UConn',
+    details: 'Awarded for having a GPA of above 3.7 for 2 semesters in a calendar year.',
+  },
+  {
+    title: 'Saint Michael\'s College Book Award for Academic Achievment and Social Conscience',
+    date: 'May 2024',
+    summary: 'Awarded by Saint Michael\'s College',
+    details: 'Recognized for my demostration of volunteerism and leadership in my community.',
+  },
 ]
 
 const Awards = () => {
@@ -148,7 +159,9 @@ const Awards = () => {
     <section id="awards" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
         <Reveal>
-          <h2 style={{ ...styles.title, color: theme.text }}>AWARDS & RECOGNITIONS</h2>
+          <h2 style={{ ...styles.title, color: theme.text }}>
+            <TypewriterHeading text="AWARDS & RECOGNITIONS" delay={120} />
+          </h2>
         </Reveal>
         
         <div style={styles.timeline}>
@@ -185,7 +198,9 @@ const Awards = () => {
                 >
                   <div style={styles.expandInner}>
                     <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
-                      <img src={placeholderImg} alt={award.title} style={styles.expandedImage} />
+                      {award.image && (
+                        <img src={award.image} alt={award.title} style={styles.expandedImage} />
+                      )}
                       <div style={styles.expandedContent}>
                         <h4 style={styles.expandedTitle}>Award Details</h4>
                         <p style={styles.expandedText}>{award.details}</p>

@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-api",
+  "version": "1.0.0",
+  "description": "Azure Functions for Portfolio",
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
+    "node-fetch": "^2.7.0"
+  }
+}
