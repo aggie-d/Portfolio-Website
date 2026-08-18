@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import Reveal from './Reveal'
+import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
+import placeholderImg from './assets/Agronil_Headshot.jpeg'
+import CMOCawardimg from './assets/CMOC_Award.png'
 
 const styles = {
   section: {
     scrollMarginTop: '86px',
-    padding: '88px 0',
+    minHeight: 'calc(100vh - 85px)',
+    padding: '32px 0 88px',
     background:
       'radial-gradient(circle at 86% 24%, rgba(210, 184, 255, 0.22), transparent 15rem), radial-gradient(circle at 84% 17%, rgba(172, 219, 214, 0.14), transparent 13rem), linear-gradient(135deg, #071022 0%, #111a32 55%, #080e1f 100%)',
   },
@@ -12,104 +17,200 @@ const styles = {
     width: 'min(1280px, calc(100% - 64px))',
     margin: '0 auto',
   },
-  top: {
-    display: 'flex',
-    alignItems: 'start',
-    justifyContent: 'space-between',
-    gap: '32px',
-    marginBottom: '30px',
-  },
   title: {
-    margin: 0,
+    maxWidth: '860px',
+    margin: '0 0 46px',
     color: '#ffffff',
     fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
     fontWeight: 950,
-    lineHeight: 1.05,
+    lineHeight: 1.04,
   },
-  portrait: {
-    width: '132px',
-    aspectRatio: '1',
-    borderRadius: '8px',
-    border: '1px solid rgba(226, 232, 240, 0.62)',
-    background:
-      'radial-gradient(circle at 50% 31%, #e8eefb 0 13%, transparent 14%), radial-gradient(circle at 50% 56%, #d2a1aa 0 17%, transparent 18%), linear-gradient(145deg, #f8fbff, #ddd8ff 58%, #f8e6ff)',
-  },
-  list: {
+  timeline: {
     display: 'grid',
-    gap: '20px',
-  },
-  award: {
-    display: 'grid',
-    gridTemplateColumns: '72px minmax(0, 1fr) minmax(120px, 150px)',
     gap: '22px',
-    alignItems: 'center',
-    padding: '22px',
+  },
+  item: {
+    position: 'relative',
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr)',
+    gap: '28px',
+    alignItems: 'start',
+    padding: '28px',
     border: '1px solid rgba(226, 232, 240, 0.34)',
     borderRadius: '8px',
     background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05))',
     boxShadow: '0 26px 70px rgba(0, 0, 0, 0.28)',
+    cursor: 'pointer',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
-  badge: {
-    width: '58px',
-    height: '58px',
-    display: 'grid',
-    placeItems: 'center',
-    borderRadius: '8px',
-    color: '#0f172a',
-    background: 'linear-gradient(145deg, #fff7c2, #f4b942)',
-    fontWeight: 950,
+  headerRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    marginBottom: '8px',
+    gap: '16px',
   },
-  heading: {
-    margin: '0 0 8px',
+  role: {
+    margin: 0,
     color: '#ffffff',
-    fontSize: '1.2rem',
+    fontSize: '1.3rem',
     fontWeight: 900,
+  },
+  date: {
+    margin: 0,
+    color: 'rgba(241, 245, 249, 0.62)',
+    fontSize: '0.85rem',
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
   },
   text: {
     margin: 0,
     color: 'rgba(248, 250, 252, 0.82)',
-    fontSize: '1rem',
-    lineHeight: 1.34,
+    fontSize: '0.95rem',
+    lineHeight: 1.42,
   },
-  image: {
-    height: '92px',
+  expandWrapper: {
+    gridColumn: '1 / -1',
     display: 'grid',
-    placeItems: 'center',
-    borderRadius: '7px',
-    color: 'rgba(15, 23, 42, 0.75)',
-    background: 'linear-gradient(145deg, #ffffff, #e9efff)',
-    fontWeight: 900,
+    transition: 'grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+  expandInner: {
+    overflow: 'hidden',
+  },
+  expandedBox: {
+    padding: '24px',
+    background: 'rgba(0, 0, 0, 0.25)',
+    borderRadius: '8px',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
+    alignItems: 'flex-start',
+  },
+  expandedImage: {
+    maxWidth: '100%',
+    maxHeight: '600px',
+    height: 'auto',
+    borderRadius: '8px',
+    objectFit: 'contain',
+    alignSelf: 'center',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+  },
+  expandedContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+  },
+  expandedTitle: {
+    margin: 0,
+    color: '#ffffff',
+    fontSize: '1.15rem',
+    fontWeight: 700,
+  },
+  expandedText: {
+    color: 'rgba(248, 250, 252, 0.9)',
+    fontSize: '0.95rem',
+    lineHeight: 1.6,
+    margin: 0,
   },
 }
 
 const awards = [
-  ['1', 'First Place, Placeholder Pitch Event', 'Developed a placeholder tool using NLP and machine learning. Replace this with the award context and result.', 'CERT'],
-  ['2', 'University Scholar Recognition', 'A placeholder scholarship or academic recognition description can live here.', 'DOC'],
-  ['3', 'Selected Peer Mentor', 'Mentorship, leadership, and community contribution placeholder text.', 'PHOTO'],
-  ['4', 'First in a Hackathon', 'A short hackathon summary with team, project, and impact placeholders.', 'BADGE'],
+  {
+    title: 'Dean\'s List',
+    date: 'Fall 2024, Fall 2025, Spring 2026',
+    summary: 'Awarded by the UConn College of Engineering and the College of Liberal Arts and Science ',
+    details: 'Awarded to the students in the upper 25th percentile in the College.',
+  },
+  {
+    title: 'Excellence in Reliability Award',
+    date: 'May 2026',
+    summary: 'Awarded by UConn Vergnano Institute of of Impact (VII).',
+    details: 'Received for my dedication and effort to the Society of Asian Scientists and Engineers',
+  },
+  {
+    title: 'Best Poster Paper: Undergraduate Student Category Award',
+    date: 'March 2026',
+    summary: 'Awarded by the CMOC Symposium',
+    details: 'Received for my research titled "Comparative Tele-Traffic Analysis for Zoom Bot Infrastructure". This research paper focused on optimizing the infrastructure for AI agents in the application of Zoom note-taking bots. \n This research was inspired by the work I did at Next Generation Innovations for Nous Meeting. ',
+    image: CMOCawardimg 
+  },
+  {
+    title: 'New England Scholar',
+    date: '2025',
+    summary: 'Awarded by UConn',
+    details: 'Awarded for having a GPA of above 3.7 for 2 semesters in a calendar year.',
+  },
+  {
+    title: 'Saint Michael\'s College Book Award for Academic Achievment and Social Conscience',
+    date: 'May 2024',
+    summary: 'Awarded by Saint Michael\'s College',
+    details: 'Recognized for my demostration of volunteerism and leadership in my community.',
+  },
 ]
 
 const Awards = () => {
   const { theme } = useTheme()
+  const [expandedIndex, setExpandedIndex] = useState(null)
 
   return (
     <section id="awards" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
-        <Reveal style={styles.top}>
-          <h2 style={{ ...styles.title, color: theme.text }}>AWARDS & RECOGNITIONS</h2>
-          <div style={styles.portrait} aria-label="Small portrait placeholder"></div>
+        <Reveal>
+          <h2 style={{ ...styles.title, color: theme.text }}>
+            <TypewriterHeading text="AWARDS & RECOGNITIONS" delay={120} />
+          </h2>
         </Reveal>
-        <div style={styles.list}>
-          {awards.map(([badge, heading, text, image], index) => (
-            <Reveal as="article" style={{ ...styles.award, borderColor: theme.panelBorder, background: theme.panel }} delay={index * 110} key={heading}>
-              <div style={styles.badge}>{badge}</div>
-              <div>
-                <h3 style={{ ...styles.heading, color: theme.text }}>{heading}</h3>
-                <p style={{ ...styles.text, color: theme.muted }}>{text}</p>
-              </div>
-              <div style={styles.image}>{image}</div>
-            </Reveal>
-          ))}
+        
+        <div style={styles.timeline}>
+          {awards.map((award, index) => {
+            const isExpanded = expandedIndex === index
+            return (
+              <Reveal
+                as="article"
+                key={award.title}
+                delay={index * 110}
+                style={{
+                  ...styles.item,
+                  borderColor: isExpanded ? 'rgba(255, 255, 255, 0.45)' : theme.panelBorder,
+                  background: isExpanded ? 'linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08))' : theme.panel,
+                }}
+                onClick={() => setExpandedIndex(isExpanded ? null : index)}
+              >
+                <div>
+                  <div style={styles.headerRow}>
+                    <h3 style={{ ...styles.role, color: theme.text }}>{award.title}</h3>
+                    <span style={styles.date}>{award.date}</span>
+                  </div>
+                  <p style={{ ...styles.text, color: theme.muted }}>{award.summary}</p>
+                </div>
+
+                <div 
+                  style={{
+                    ...styles.expandWrapper,
+                    gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                    opacity: isExpanded ? 1 : 0,
+                    marginTop: isExpanded ? '16px' : '0px',
+                    pointerEvents: isExpanded ? 'auto' : 'none',
+                  }}
+                >
+                  <div style={styles.expandInner}>
+                    <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
+                      {award.image && (
+                        <img src={award.image} alt={award.title} style={styles.expandedImage} />
+                      )}
+                      <div style={styles.expandedContent}>
+                        <h4 style={styles.expandedTitle}>Award Details</h4>
+                        <p style={styles.expandedText}>{award.details}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>

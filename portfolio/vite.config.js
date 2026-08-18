@@ -12,19 +12,25 @@ export default defineConfig(({ mode }) => {
       {
         name: 'api-server-proxy',
         configureServer(server) {
-          server.middlewares.use('/api/now-playing', async (req, res, next) => {
-            // Populate process.env for the backend function
-            Object.assign(process.env, env);
+          server.middlewares.use(async (req, res, next) => {
+            const path = req.url.split('?')[0];
+            if (path === '/api/now-playing' || path === '/api/top-tracks') {
+              // Populate process.env for the backend function
+              Object.assign(process.env, env);
 
-            // Mock Vercel's res.status() and res.json() helper functions
-            res.status = (code) => { res.statusCode = code; return res; };
-            res.json = (data) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(data)); };
+              // Mock Vercel's res.status() and res.json() helper functions
+              res.status = (code) => { res.statusCode = code; return res; };
+              res.json = (data) => { res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(data)); };
 
-            try {
-              const { default: handler } = await server.ssrLoadModule('/api/now-playing.js');
-              await handler(req, res);
-            } catch (error) {
-              res.status(500).json({ error: error.message });
+              try {
+                const apiFile = path === '/api/top-tracks' ? '/api/top-tracks.js' : '/api/now-playing.js';
+                const { default: handler } = await server.ssrLoadModule(apiFile);
+                await handler(req, res);
+              } catch (error) {
+                res.status(500).json({ error: error.message });
+              }
+            } else {
+              next();
             }
           });
         }

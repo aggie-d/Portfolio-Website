@@ -107,8 +107,8 @@ const links = [
   ['Home', '/'],
   ['About Me', '/about'],
   ['Experience', '/experience'],
-  ['Projects', '/projects'],
   ['Research', '/research'],
+  ['Projects', '/projects'],
   ['Awards & Honors', '/awards'],
   ['Contact', '/contact'],
 ]
