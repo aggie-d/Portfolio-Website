@@ -23,6 +23,7 @@ import icon13 from './assets/PYsr.png'
 import icon1 from './assets/Python.png'
 import icon15 from './assets/SQL.png'
 import icon16 from './assets/Overleaf.png'
+import icon17 from './assets/React_logo.webp'
 import cubeModel from './assets/cube.glb?url'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -232,7 +233,7 @@ const Home = ({ onNavigate }) => {
     return () => ctx.revert()
   }, [])
 
-  const carouselIcons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15, icon16]
+  const carouselIcons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15, icon16, icon17]
   // Duplicated array for seamless GSAP scrolling loop
   const carouselItems = [...carouselIcons, ...carouselIcons]
 

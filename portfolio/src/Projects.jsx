@@ -3,6 +3,15 @@ import Reveal from './Reveal'
 import TypewriterHeading from './TypewriterHeading'
 import { useTheme } from './ThemeContext'
 import placeholderImg from './assets/Agronil_Headshot.jpeg'
+import react_logo from './assets/React_logo.webp'
+import python_logo from './assets/Python.png'
+import docker_logo from './assets/docker.png'
+import farm_fresh_demo from './assets/Farm_Fresh_Demo.mp4'
+import vite_logo from './assets/vite.svg'
+import spotify_logo from './assets/spotify_logo.png'
+import pysr_logo from './assets/PYsr.png'
+import pandas_logo from './assets/Pandas.png'
+import pysr_poster from './assets/PySR_Poster.jfif'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
@@ -66,6 +75,7 @@ const styles = {
     height: '92px',
     display: 'grid',
     placeItems: 'center',
+    textAlign: 'center',
     borderRadius: '7px',
     color: '#0f172a',
     background: 'linear-gradient(110deg, #ffffff, #edf4ff)',
@@ -102,10 +112,12 @@ const styles = {
     alignItems: 'center',
   },
   techIcon: {
-    width: '24px',
-    height: '24px',
+    width: '26px',
+    height: '26px',
+    padding: '3px',
     borderRadius: '50%',
-    objectFit: 'cover',
+    objectFit: 'contain',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     border: '1px solid rgba(255, 255, 255, 0.2)',
   },
   button: {
@@ -190,14 +202,14 @@ const styles = {
     lineHeight: 1,
   },
   modalImageWrapper: {
-    width: '200px',
-    maxWidth: '35%',
-    flexShrink: 0,
+    width: '100%',
+    maxWidth: '600px',
+    alignSelf: 'center',
   },
   modalImage: {
     width: '100%',
-    aspectRatio: '1',
-    objectFit: 'cover',
+    maxHeight: '350px',
+    objectFit: 'contain',
     borderRadius: '12px',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     boxShadow: '0 12px 30px rgba(0,0,0,0.4)',
@@ -230,41 +242,41 @@ const styles = {
 
 const projects = [
   {
-    name: 'Project Alpha',
-    title: 'Multimodal Research Tool',
-    meta: 'First place, placeholder pitch event',
-    desc: 'A precision-diagnostic tool using advanced NLP and machine learning. Replace this with your real project summary.',
-    fullDesc: 'This project involved building a robust tool using advanced NLP and machine learning techniques to diagnose issues with precision. It successfully parsed multimodal inputs and provided accurate outputs, earning first place at the recent pitch event. Our focus was on creating a highly scalable and resilient architecture. We gathered an extensive dataset spanning several modalities and achieved an impressive F1 score in our final benchmarks.',
-    techs: ['Python', 'TensorFlow', 'React', 'AWS'],
-    githubUrl: 'https://github.com/yourusername/project-alpha',
+    name: 'Portfolio Website',
+    title: 'Interactive Personal Portfolio',
+    meta: 'Personal Portfolio & Showcase',
+    desc: 'A dynamic, modern personal portfolio website featuring 3D models and advanced animations all about me!',
+    fullDesc: 'The website that you\re on right now! I created a fully responsive and interactive personal portfolio built to showcase my projects, skills, professional experience, and more. I used React for a component-driven architecture and Vite for fast development and optimized production builds. The user interface is brought to life using GSAP for smooth, advanced animations, and integrates Google\'s Model Viewer to natively render and interact with 3D models directly within the browser (seen on my homepage), delivering a (hopefully) highly engaging user experience.',
+    techs: ['React', 'Vite', 'GSAP', 'Spotify API', 'Vercel', 'Docker'],
+    techImages: [react_logo, vite_logo, spotify_logo], // Replace with your actual imported image variables (e.g., react_logo)
+    githubUrl: 'https://github.com/aggie-d/Portfolio-Website',
+    image: "", // Replace with your imported image variable for the project thumbnail
   },
   {
-    name: 'Project Beta',
-    title: 'AI Meeting Transcription',
-    meta: 'Django, Tailwind CSS, automation',
-    desc: 'An AI-driven application for meeting transcription, summaries, and task extraction. Replace with your case study.',
-    fullDesc: 'An AI-driven application designed to automate meeting transcriptions and generate concise summaries. We used OpenAI APIs to extract actionable tasks directly from the conversation, improving team productivity. The frontend was built with modern UI frameworks to ensure a snappy user experience. Features include live audio streaming, speaker diarization, and automatic syncing to Jira and Asana.',
-    techs: ['Django', 'Tailwind CSS', 'OpenAI API', 'WebSockets'],
-    githubUrl: 'https://github.com/yourusername/project-beta',
+    name: 'Farm Fresh Market',
+    title: 'Online Farmer\'s Market',
+    meta: 'Fullstack Web Application',
+    desc: 'A dual-sided marketplace connecting local farmers directly with consumers for fresh produce sales.',
+    fullDesc: 'Created for my CSE 2102 Software Engineering course, Farm Fresh Market is a comprehensive online farmer\'s market designed to connect local agricultural producers directly with consumers. We built a dual-sided platform featuring dedicated dashboards for both buyers and sellers. Sellers can easily manage inventory and view sales analytics, while buyers can browse products, favorite local farms, and track past orders. The application utilizes a React single-page frontend and a Python Flask REST API backend, with Docker containerization ensuring seamless deployment.',
+    techs: ['React', 'Flask', 'Python', 'SQLite', 'Docker'],
+    techImages: [react_logo, docker_logo, python_logo],
+    githubUrl: 'https://github.com/aggie-d/Farm_Fresh',
+    // Replace the empty string below with the imported video variable once you import it at the top!
+    demoVideo: farm_fresh_demo,
+    image: "", // Replace with your imported image variable
   },
   {
-    name: 'Project Gamma',
-    title: 'Dashboard Platform',
-    meta: 'Analytics and data visualization',
-    desc: 'A web platform for tracking key metrics, visualizing patterns, and presenting usable insights.',
-    fullDesc: 'A comprehensive web platform that integrates with multiple data sources to provide real-time tracking of key performance metrics. We utilized D3.js for intricate data visualizations and built a modular dashboard where users can customize their views according to their specific needs. The application handles high-frequency data ingestion and caches it via Redis for instant load times.',
-    techs: ['React', 'D3.js', 'Node.js', 'Redis'],
-    githubUrl: 'https://github.com/yourusername/project-gamma',
+    name: 'Ethylene Cracking Optimization',
+    title: 'Symbolic Regression for Process Feasibility',
+    meta: 'Machine Learning & Symbolic Regression',
+    desc: 'A machine-learning pipeline using symbolic regression to discover interpretable mathematical equations for classifying process feasibility.',
+    fullDesc: 'This project leverages PySR (Symbolic Regression) to discover interpretable mathematical equations for classifying ethylene cracking operating conditions as feasible or infeasible. Instead of relying on a black-box classifier, the pipeline produces a compact feasibility-boundary equation based on reactor variables. The end-to-end workflow handles dataset splitting, model training, and evaluation metrics (precision, recall, F1, AUC). It tracks trial metadata in a SQLite database and includes custom tools to measure structural drift between equations using SymPy and tree-edit distances.\nBased off this research, I created and presented a poster at the UConn Undergraduate Frontiers 2026 Exhibition.',
+    techs: ['Python', 'PySR', 'SymPy', 'Scikit-learn', 'SQLite', 'Pandas'],
+    techImages: [python_logo, pysr_logo, pandas_logo],
+    githubUrl: 'https://github.com/aggie-d/Optimizing-Ethylene-Cracking-Using-Symbolic-Regression', // Replace with your actual repo URL    
+    image: pysr_poster, // Replace with your imported image variable
   },
-  {
-    name: 'Project Delta',
-    title: 'Systems Utility',
-    meta: 'Architecture and tooling',
-    desc: 'A low-level or developer productivity project with placeholder results, stack details, and links.',
-    fullDesc: 'This utility was designed to enhance developer productivity by providing a low-level tooling interface. It intercepts system calls to log performance bottlenecks and generates detailed reports. It integrates seamlessly into existing CI/CD pipelines, saving hours of manual debugging. We wrote the core logic in Rust to guarantee memory safety and optimal execution speed across platforms.',
-    techs: ['Rust', 'Docker', 'Bash', 'GitHub Actions'],
-    githubUrl: 'https://github.com/yourusername/project-delta',
-  },
+
 ]
 
 const Projects = () => {
@@ -312,9 +324,9 @@ const Projects = () => {
                 <p style={{ ...styles.desc, color: theme.muted }}>{proj.desc}</p>
                 <div style={styles.footer}>
                   <div style={styles.tech}>
-                    <img src={placeholderImg} alt="Tech 1" style={styles.techIcon} />
-                    <img src={placeholderImg} alt="Tech 2" style={styles.techIcon} />
-                    <img src={placeholderImg} alt="Tech 3" style={styles.techIcon} />
+                    {proj.techImages?.map((img, i) => (
+                      <img key={i} src={img} alt={`Tech ${i+1}`} style={styles.techIcon} />
+                    ))}
                   </div>
                   <a 
                     href={proj.githubUrl || '#'}
@@ -349,19 +361,9 @@ const Projects = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button style={styles.modalCloseBtn} onClick={closeModal}>&times;</button>
-            
-            <div style={styles.modalImageWrapper}>
-              <img src={placeholderImg} alt={selectedProject.title} style={styles.modalImage} />
-            </div>
-            
             <div style={styles.modalTextCol}>
-              <h2 style={styles.modalTitle}>{selectedProject.title}</h2>
-              <p style={styles.modalDesc}>{selectedProject.fullDesc}</p>
-              
-              <div style={{ marginTop: 'auto' }}>
-                <p style={styles.modalTechs}>
-                  <strong style={{ color: '#ffffff' }}>Technologies Used:</strong> {selectedProject.techs.join(', ')}
-                </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                <h2 style={styles.modalTitle}>{selectedProject.name}</h2>
                 <a 
                   href={selectedProject.githubUrl || '#'} 
                   target="_blank"
@@ -370,12 +372,31 @@ const Projects = () => {
                     ...styles.iconButton, 
                     color: theme.buttonText, 
                     background: theme.button, 
-                    marginTop: '20px'
                   }}
                   title="View Source on GitHub"
                 >
                   <GithubIcon />
                 </a>
+              </div>
+              <p style={styles.modalDesc}>{selectedProject.fullDesc}</p>
+              
+              <p style={styles.modalTechs}>
+                <strong style={{ color: '#ffffff' }}>Tech Stack:</strong> {selectedProject.techs.join(', ')}
+              </p>
+              
+              <div style={styles.modalImageWrapper}>
+                {selectedProject.demoVideo ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                    <video 
+                      src={selectedProject.demoVideo} 
+                      controls 
+                      style={{ ...styles.modalImage, backgroundColor: '#000' }} 
+                    />
+                    <span style={{ color: '#ffffff', fontSize: '0.95rem', fontWeight: 600 }}>Watch our demo here!</span>
+                  </div>
+                ) : (
+                  <img src={selectedProject.image || placeholderImg} alt={selectedProject.title} style={styles.modalImage} />
+                )}
               </div>
             </div>
 
