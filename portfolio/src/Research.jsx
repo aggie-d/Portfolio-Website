@@ -44,8 +44,8 @@ const styles = {
   },
   item: {
     position: 'relative',
-    display: 'grid',
-    gridTemplateColumns: '170px minmax(0, 1fr)',
+    display: 'flex',
+    flexWrap: 'wrap',
     gap: '28px',
     alignItems: 'start',
     padding: '28px',
@@ -211,8 +211,8 @@ const Research = () => {
                   ))}
                 </div>
 
-                <p style={{ ...styles.date, color: theme.softText }}>{res.date}</p>
-                <div>
+                <p style={{ ...styles.date, color: theme.softText, flexBasis: '170px', flexShrink: 0 }}>{res.date}</p>
+                <div style={{ flex: '1 1 250px' }}>
                   <h3 style={{ ...styles.role, color: theme.text }}>{res.role}</h3>
                   <p style={{ ...styles.org, color: theme.softText }}>{res.org}</p>
                   <p style={{ ...styles.text, color: theme.muted }}>{res.text}</p>
@@ -228,7 +228,7 @@ const Research = () => {
                   }}
                 >
                   <div style={styles.expandInner}>
-                    <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
+                    <div className="expanded-box" style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
                       {res.image && <img src={res.image} alt={res.role} style={styles.expandedImage} />}
                       <div style={styles.expandedContent}>
                         <h4 style={styles.expandedTitle}>Research Details</h4>

@@ -49,8 +49,8 @@ const styles = {
   },
   item: {
     position: 'relative',
-    display: 'grid',
-    gridTemplateColumns: '170px minmax(0, 1fr)',
+    display: 'flex',
+    flexWrap: 'wrap',
     gap: '28px',
     alignItems: 'start',
     padding: '28px',
@@ -242,8 +242,8 @@ const Experience = () => {
                   ))}
                 </div>
 
-                <p style={{ ...styles.date, color: theme.softText }}>{exp.date}</p>
-                <div>
+                <p style={{ ...styles.date, color: theme.softText, flexBasis: '170px', flexShrink: 0 }}>{exp.date}</p>
+                <div style={{ flex: '1 1 250px' }}>
                   <h3 style={{ ...styles.role, color: theme.text }}>{exp.role}</h3>
                   <p style={{ ...styles.org, color: theme.softText }}>{exp.org}</p>
                   <p style={{ ...styles.text, color: theme.muted }}>{exp.text}</p>
@@ -259,7 +259,7 @@ const Experience = () => {
                   }}
                 >
                   <div style={styles.expandInner}>
-                    <div style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
+                    <div className="expanded-box" style={styles.expandedBox} onClick={(e) => e.stopPropagation()}>
                       <img src={exp.image} alt={exp.role} style={styles.expandedImage} />
                       <div style={styles.expandedContent}>
                         <h4 style={styles.expandedTitle}>Role & Impact Details</h4>

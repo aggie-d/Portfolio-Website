@@ -12,6 +12,7 @@ import spotify_logo from './assets/spotify_logo.png'
 import pysr_logo from './assets/PYsr.png'
 import pandas_logo from './assets/Pandas.png'
 import pysr_poster from './assets/PySR_Poster.jfif'
+import portfolio_cover from './assets/Website_screenshot.png'
 
 const GithubIcon = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
@@ -55,7 +56,7 @@ const styles = {
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
     gap: '28px',
   },
   card: {
@@ -171,7 +172,8 @@ const styles = {
     width: '100%',
     maxHeight: '94vh',
     maxWidth: '1200px',
-    height: '500px',
+    minHeight: '500px',
+    height: 'auto',
     backgroundColor: '#0f172a',
     borderRadius: '16px',
     padding: '50px 60px',
@@ -245,12 +247,12 @@ const projects = [
     name: 'Portfolio Website',
     title: 'Interactive Personal Portfolio',
     meta: 'Personal Portfolio & Showcase',
-    desc: 'A dynamic, modern personal portfolio website featuring 3D models and advanced animations all about me!',
-    fullDesc: 'The website that you\re on right now! I created a fully responsive and interactive personal portfolio built to showcase my projects, skills, professional experience, and more. I used React for a component-driven architecture and Vite for fast development and optimized production builds. The user interface is brought to life using GSAP for smooth, advanced animations, and integrates Google\'s Model Viewer to natively render and interact with 3D models directly within the browser (seen on my homepage), delivering a (hopefully) highly engaging user experience.',
-    techs: ['React', 'Vite', 'GSAP', 'Spotify API', 'Vercel', 'Docker'],
+    desc: 'A dynamic, modern personal portfolio website featuring 3D models, advanced animations, and a serverless Azure backend.',
+    fullDesc: 'The website that you\'re on right now! I created a fully responsive and interactive personal portfolio built to showcase my projects, skills, professional experience, and more. I used React for a component-driven architecture and Vite for fast development. The user interface is brought to life using GSAP for smooth animations, and integrates Google\'s Model Viewer to natively render 3D models. Recently, I migrated my live Spotify API integrations to a scalable serverless backend using Azure Functions.',
+    techs: ['React', 'Vite', 'GSAP', 'Azure Functions', 'Spotify API', 'Docker'],
     techImages: [react_logo, vite_logo, spotify_logo], // Replace with your actual imported image variables (e.g., react_logo)
     githubUrl: 'https://github.com/aggie-d/Portfolio-Website',
-    image: "", // Replace with your imported image variable for the project thumbnail
+    image: portfolio_cover, 
   },
   {
     name: 'Farm Fresh Market',

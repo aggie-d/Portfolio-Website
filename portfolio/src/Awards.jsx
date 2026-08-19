@@ -45,6 +45,7 @@ const styles = {
   },
   headerRow: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'baseline',
     marginBottom: '8px',
@@ -62,7 +63,6 @@ const styles = {
     fontSize: '0.85rem',
     fontWeight: 700,
     textTransform: 'uppercase',
-    whiteSpace: 'nowrap',
   },
   text: {
     margin: 0,

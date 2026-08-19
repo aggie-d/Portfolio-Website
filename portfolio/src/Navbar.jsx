@@ -16,12 +16,13 @@ const styles = {
     justifyContent: 'space-between',
     gap: '24px',
     padding: '18px 0 14px',
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
     transition: 'border-color 300ms ease',
   },
   logo: {
     width: '52px',
     height: '52px',
+    flexShrink: 0,
     display: 'grid',
     placeItems: 'center',
     borderRadius: '14px',
@@ -40,12 +41,17 @@ const styles = {
   links: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
+    overflowX: 'auto',
+    whiteSpace: 'nowrap',
     gap: 'clamp(12px, 2.4vw, 30px)',
     listStyle: 'none',
     margin: 0,
-    padding: 0,
+    padding: '0 8px',
+    maxWidth: '100%',
+    minWidth: 0,
+    scrollbarWidth: 'none', /* Firefox */
+    msOverflowStyle: 'none', /* IE/Edge */
   },
   link: {
     position: 'relative',
@@ -62,6 +68,7 @@ const styles = {
   toggle: {
     width: '74px',
     height: '38px',
+    flexShrink: 0,
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
@@ -154,6 +161,11 @@ const Navbar = ({ currentPath, onNavigate }) => {
             </li>
           ))}
         </ul>
+        <div className="nav-scroll-indicator">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={theme.text} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.4 }}>
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
         <button
           type="button"
           style={styles.toggle}

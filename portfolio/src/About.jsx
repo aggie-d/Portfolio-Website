@@ -50,7 +50,7 @@ const styles = {
   },
   top: {
     display: 'grid',
-    gridTemplateColumns: 'minmax(min(520px, 100%), 1fr) minmax(220px, 320px)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
     gap: '72px',
     alignItems: 'start',
   },
@@ -242,14 +242,27 @@ const About = ({ onNavigate }) => {
   return (
     <section id="about" style={{ ...styles.section, background: theme.page }}>
       <div style={styles.wrap}>
-        <div style={styles.top}>
+        {/* Mobile Title */}
+        <div className="mobile-only-title">
+          <Reveal>
+            <h2 style={{ ...styles.title, color: theme.text }}>
+              <TypewriterHeading text="ABOUT ME" delay={120} />
+            </h2>
+            <h3 style={styles.heading}> </h3>
+          </Reveal>
+        </div>
+
+        <div className="about-top" style={styles.top}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <Reveal>
-              <h2 style={{ ...styles.title, color: theme.text }}>
-                <TypewriterHeading text="ABOUT ME" delay={120} />
-              </h2>
-              <h3 style={styles.heading}> </h3>
-            </Reveal>
+            {/* Desktop Title */}
+            <div className="desktop-only-title">
+              <Reveal>
+                <h2 style={{ ...styles.title, color: theme.text }}>
+                  <TypewriterHeading text="ABOUT ME" delay={120} />
+                </h2>
+                <h3 style={styles.heading}> </h3>
+              </Reveal>
+            </div>
             <Reveal delay={150}>
               <p style={{ ...styles.text, color: theme.muted }}>
               It's nice to meet you! I'm Aggie, a UConn student pursuing a dual-degree in <span style={highlightStyle}>Computer Science</span> and <span style={highlightStyle}>Cognitive Science</span> with a minor in <span style={highlightStyle}>Statistics</span>. 
@@ -432,7 +445,7 @@ const About = ({ onNavigate }) => {
               >
                 {/* Scroll Reveal Wrapper */}
                 <Reveal 
-                  delay={index * 120} 
+                  delay={index * 15} 
                   style={{ display: 'flex', width: '100%', flexDirection: 'inherit', justifyContent: 'space-between' }}
                 >
                   {/* Timeline Dot */}

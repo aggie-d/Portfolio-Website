@@ -1,10 +1,10 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "node",
-    "SPOTIFY_CLIENT_ID": "",
-    "SPOTIFY_CLIENT_SECRET": "",
-    "SPOTIFY_REFRESH_TOKEN": ""
+    "SPOTIFY_CLIENT_ID": "bf80784d54e24e058ec23c962287b9fb",
+    "SPOTIFY_CLIENT_SECRET": "e3f4918a51e44790881c936f32f7a8c5",
+    "SPOTIFY_REFRESH_TOKEN": "AQBo2oE1FH9wpcG7tF2UxhuDIRuJUUWirAE2ajGbFWWe6qMjjDzDHdDmSJHdzlr2tNmUEHWerdckN2C61IAmrl97TlRowbfLU4RJwHGci1xc3E0P82-s5DFlj0WuiAawiA4"
   }
 }

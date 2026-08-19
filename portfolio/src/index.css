@@ -24,6 +24,15 @@ button,
 input,
 textarea {
   font: inherit;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mobile-only-title {
+  display: none;
+}
+
+.nav-scroll-indicator {
+  display: none;
 }
 
 /* Timeline Container */
@@ -174,7 +183,7 @@ textarea {
 @media (max-width: 768px) {
   .timeline-line {
     left: 24px;
-    transform: none;
+    transform: translateX(-50%);
   }
 
   .timeline-item {
@@ -184,7 +193,7 @@ textarea {
   }
 
   .timeline-dot {
-    left: 24px;
+    left: -30px;
     top: 24px;
   }
 
@@ -206,13 +215,79 @@ textarea {
     padding: 22px;
     order: 1;
   }
+
+  .home-tile {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+
+  .home-tile > a {
+    margin-top: 0 !important;
+  }
+
+  .mobile-only-title {
+    display: block !important;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .desktop-only-title {
+    display: none !important;
+  }
+
+  .about-top {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 40px !important;
+  }
+
+  .nav-scroll-indicator {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    animation: pulseArrow 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseArrow {
+    0%, 100% { transform: translateX(0); opacity: 0.3; }
+    50% { transform: translateX(4px); opacity: 0.8; }
+  }
+
+  .expanded-box {
+    flex-direction: column-reverse !important;
+  }
+
+  .expanded-box > img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 250px !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 0 8px !important;
+  }
+  .contact-grid span {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .contact-grid img, .contact-grid svg {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .contact-grid p {
+    font-size: 0.9rem !important;
+  }
 }
 
 /* Hobbies Grid */
 .hobbies-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px 10px; /* 20px between rows, 8px between columns */
+  gap: 14px 10px;
   margin-top: 16px;
 }
 
@@ -228,5 +303,9 @@ textarea {
     grid-template-columns: repeat(2, 1fr);
     max-width: 100%;
   }
+}
+
+nav ul::-webkit-scrollbar {
+  display: none;
 }
 

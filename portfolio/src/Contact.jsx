@@ -147,7 +147,7 @@ const Contact = () => {
   return (
     <section id="contact" style={{ ...styles.section, background: theme.contact }}>
       <div style={styles.stars}></div>
-      <div style={styles.wrap}>
+      <div className="contact-grid" style={styles.wrap}>
         {contacts.map((contact, index) => (
           <Reveal delay={index * 130} key={contact.id}>
             <a

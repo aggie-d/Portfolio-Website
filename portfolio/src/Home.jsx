@@ -107,7 +107,8 @@ const styles = {
   },
   tile: {
     width: '100%',
-    height: '250px',
+    minHeight: '250px',
+    height: 'auto',
     boxSizing: 'border-box',
     display: 'flex',
     alignItems: 'center',
@@ -296,7 +297,7 @@ const Home = ({ onNavigate }) => {
           {previewTiles.map(([title, kicker, text, path, buttonLabel], index) => (
             <div
               key={path}
-              className="gsap-reveal"
+              className="gsap-reveal home-tile"
               data-delay={index * 90}
               style={{ ...styles.tile, borderColor: theme.panelBorder, background: theme.panel }}
             >
