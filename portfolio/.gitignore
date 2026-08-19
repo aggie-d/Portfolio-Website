@@ -25,3 +25,7 @@ dist-ssr
 
 .vercel
 .env*
+
+# Azure Functions secrets
+api/local.settings.json
+api/node_modules/
