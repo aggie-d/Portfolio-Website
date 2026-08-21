@@ -160,7 +160,7 @@ const Awards = () => {
       <div style={styles.wrap}>
         <Reveal>
           <h2 style={{ ...styles.title, color: theme.text }}>
-            <TypewriterHeading text="AWARDS & RECOGNITIONS" delay={120} />
+            <TypewriterHeading text="AWARDS & HONORS" delay={120} />
           </h2>
         </Reveal>
         

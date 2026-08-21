@@ -201,7 +201,7 @@ const About = ({ onNavigate }) => {
       image: Basketball,
     },
     {
-      name: 'Travelling',
+      name: 'Traveling',
       description: 'I\'ve been to India, Dubai, Puerto Rico and Cancún.',
       image: airplane,
     },
