@@ -63,7 +63,7 @@ const styles = {
     textShadow: '0 4px 12px rgba(0, 0, 0, 0.42)',
   },
   modelContainer: {
-    minHeight: '320px',
+    minHeight: 'clamp(200px, 45vw, 320px)',
     width: '100%',
     display: 'flex',
     alignItems: 'center',
@@ -224,7 +224,7 @@ const Home = ({ onNavigate }) => {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 85%',
+              start: 'top 100%',
               toggleActions: 'play none none reverse',
             },
           }
@@ -258,7 +258,7 @@ const Home = ({ onNavigate }) => {
               alt="A 3D model placeholder"
               auto-rotate="true"
               camera-controls="true"
-              style={{ width: '100%', height: '320px', background: 'transparent' }}
+              style={{ width: '100%', height: 'clamp(200px, 45vw, 320px)', background: 'transparent', touchAction: 'pan-y' }}
             >
               <div slot="poster" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: theme.softText, textShadow: smallTextShadowStyle }}>
                 3D Model Placeholder

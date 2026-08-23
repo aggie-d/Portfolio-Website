@@ -73,14 +73,15 @@ const styles = {
     transition: 'transform 0.2s ease, background 0.2s ease',
   },
   logo: {
-    height: '92px',
+    minHeight: '92px',
+    padding: '12px',
     display: 'grid',
     placeItems: 'center',
     textAlign: 'center',
     borderRadius: '7px',
     color: '#0f172a',
     background: 'linear-gradient(110deg, #ffffff, #edf4ff)',
-    fontSize: '2.1rem',
+    fontSize: 'clamp(1.4rem, 4.5vw, 2.1rem)',
     fontWeight: 950,
   },
   titleSmall: {

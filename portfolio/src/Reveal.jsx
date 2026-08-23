@@ -49,8 +49,8 @@ const Reveal = ({ as: Tag = 'div', children, delay = 0, style = {}, once = true,
         }
       },
       {
-        rootMargin: '0px 0px -12% 0px',
-        threshold: 0.14,
+        rootMargin: '0px',
+        threshold: 0,
       },
     )
 
