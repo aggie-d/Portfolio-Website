@@ -49,10 +49,12 @@ const styles = {
     margin: '0 auto',
   },
   top: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
     gap: '72px',
-    alignItems: 'start',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
   },
   title: {
     margin: 0,
@@ -253,7 +255,7 @@ const About = ({ onNavigate }) => {
         </div>
 
         <div className="about-top" style={styles.top}>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: '1 1 min(500px, 100%)', maxWidth: '100%' }}>
             {/* Desktop Title */}
             <div className="desktop-only-title">
               <Reveal>
@@ -404,7 +406,7 @@ const About = ({ onNavigate }) => {
             </Reveal>
           </div>
 
-          <Reveal as="aside" delay={140} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'min(100%, 300px)', margin: '0 auto' }}>
+          <Reveal as="aside" delay={140} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: '0 0 min(100%, 300px)', margin: '0 auto' }}>
             <div style={{ ...styles.portraitCard, borderColor: theme.panelBorder, background: theme.panel }}>
               <div style={styles.portrait} aria-label="Portrait of me"></div>
             </div>
