@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useTheme } from './ThemeContext'
 
 const styles = {
@@ -122,6 +123,14 @@ const links = [
 
 const Navbar = ({ currentPath, onNavigate }) => {
   const { theme, isDark, toggleTheme } = useTheme()
+  const scrollRef = useRef(null)
+
+  const scrollNav = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 150
+      scrollRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' })
+    }
+  }
 
   return (
     <header style={{ ...styles.outer, background: theme.nav }}>
@@ -141,7 +150,12 @@ const Navbar = ({ currentPath, onNavigate }) => {
             style={styles.logoImage}
           />
         </a>
-        <ul style={styles.links}>
+        <div className="nav-scroll-indicator" onClick={() => scrollNav('left')} style={{ cursor: 'pointer', paddingRight: '4px' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={theme.text} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}>
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </div>
+        <ul style={styles.links} ref={scrollRef}>
           {links.map(([label, href]) => (
             <li key={href}>
               <a
@@ -161,8 +175,8 @@ const Navbar = ({ currentPath, onNavigate }) => {
             </li>
           ))}
         </ul>
-        <div className="nav-scroll-indicator">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={theme.text} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.4 }}>
+        <div className="nav-scroll-indicator" onClick={() => scrollNav('right')} style={{ cursor: 'pointer', paddingLeft: '4px' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={theme.text} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}>
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </div>

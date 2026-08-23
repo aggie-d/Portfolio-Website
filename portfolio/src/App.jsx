@@ -7,6 +7,8 @@ import Projects from './Projects'
 import Research from './Research'
 import Awards from './Awards'
 import Contact from './Contact'
+import Footer from './Footer'
+import ScrollHint from './ScrollHint'
 import { ThemeProvider, themes } from './ThemeContext'
 
 const routes = {
@@ -63,11 +65,13 @@ function App() {
 
   return (
     <ThemeProvider value={{ theme, isDark, toggleTheme }}>
-      <div style={{ minHeight: '100vh', background: theme.page, transition: 'background 300ms ease' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: theme.page, transition: 'background 300ms ease' }}>
         <Navbar currentPath={path} onNavigate={handleNavigate} />
-        <main>
+        <main style={{ flex: 1 }}>
           <Page onNavigate={handleNavigate} />
         </main>
+        <Footer onNavigate={handleNavigate} />
+        <ScrollHint />
       </div>
     </ThemeProvider>
   )
