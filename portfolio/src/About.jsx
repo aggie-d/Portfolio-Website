@@ -98,6 +98,13 @@ const styles = {
 const timelineEvents = [
   {
     date: 'August 2026 - Present',
+    title: 'University of Connecticut',
+    subtitle: 'Undergraduate Teaching Assistant',
+    description: 'Ungraduate Teaching Assitant for CSE 2050: Data Structures & Object Orientated Programming, a foundational coding class for all CS students.',
+    image: UConn_SOC
+  },
+  {
+    date: 'August 2026 - Present',
     title: 'ASML',
     subtitle: 'Campus Ambassador',
     description: 'Bringining awareness to the ASML brand at UConn.',
